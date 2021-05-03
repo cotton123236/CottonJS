@@ -1,0 +1,27 @@
+{
+  "name": "cotton.js",
+  "version": "1.0.0",
+  "description": "a JavaScript library  which allows you to make a mouse-followed animation easily",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cotton123236/cotton.js.git"
+  },
+  "author": "Wilson Wu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cotton123236/cotton.js/issues"
+  },
+  "homepage": "https://github.com/cotton123236/cotton.js#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.0",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0"
+  }
+}
