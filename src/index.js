@@ -1,3 +1,8 @@
+import { mobileDetecter } from './utils/mobileDetecter'
+import { getRectWidth, getRectHeight } from './utils/rectGetter'
+import { warn } from './utils/warn'
+import { bindCallback } from './utils/bindCallback'
+
 export default class Cotton {
 
   constructor(element, options) {
@@ -20,53 +25,41 @@ export default class Cotton {
         modelLeave: null
       }
     }
-
+    
     this.element = document.querySelector(element);
     this.params = Object.assign({}, defaults, options);
     this.models = document.querySelectorAll(this.params.models);
+    
+    if (!this.element) return warn('Cannot define a element which is not exist');
+    if (this.params.speed > 1 || this.params.speed <= 0) return warn('The speed property must be > 0 or <= 1');
 
-    this.init();
+    if (!Cotton.isMobile()) this.init();
   }
 
   // private functions
+  // detect is mobile or not
+  static isMobile() {
+    return mobileDetecter();
+  }
+
   // get target width
   static getElementWidth(target) {
-    return target.getBoundingClientRect().width;
+    return getRectWidth(target);
   }
 
   // get target height
   static getElementHeight(target) {
-    return target.getBoundingClientRect().height;
+    return getRectHeight(target);
   }
 
   // callbacks when cotton element enter (leave) models
   static bindModelCallback(scope) {
-    const element = scope.element;
-    const models = scope.models;
-    const params = scope.params;
-
-    models.forEach((item) => {
-      if (item.isBound) return;
-      item.isBound = true;
-      item.addEventListener('mouseenter', function() {
-        if (params.on.modelEnter && typeof params.on.modelEnter === 'function') params.on.modelEnter.call(scope, element, this);
-        element.classList.add(params.cottonActiveClass.replace('.', ''));
-        this.classList.add(params.modelsActiveClass.replace('.', ''));
-      });
-      item.addEventListener('mouseleave', function() {
-        if (params.on.modelLeave && typeof params.on.modelLeave === 'function') params.on.modelLeave.call(scope, element, this);
-        element.classList.remove(params.cottonActiveClass.replace('.', ''));
-        this.classList.remove(params.modelsActiveClass.replace('.', ''));
-      });
-    })
+    if (scope.models.length !== 0) return bindCallback(scope);
   }
 
   // public methods
   // init
   init() {
-    if (!this.element) return console.error(`This element is not defined`);
-    if (this.params.speed > 1 || this.params.speed <= 0) return console.error(`The speed property must be > 0 or <= 1`);
-
     this.move();
     Cotton.bindModelCallback(this);
   }

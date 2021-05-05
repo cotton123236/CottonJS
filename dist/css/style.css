@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Philosopher:wght@400;700&display=swap');
+
+body {
+  font-family: 'Philosopher', 'Noto Sans TC', sans-serif;
+}
+
+a.logo span {
+  color: #ff77c2;
+  font-size: 1.5rem;
+}

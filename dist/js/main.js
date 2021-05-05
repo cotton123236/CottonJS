@@ -1,0 +1,1 @@
+new Cotton('a.logo')
