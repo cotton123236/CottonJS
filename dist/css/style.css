@@ -4,7 +4,10 @@ body {
   font-family: 'Philosopher', 'Noto Sans TC', sans-serif;
 }
 
-a.logo span {
-  color: #ff77c2;
-  font-size: 1.5rem;
+.sidebar {
+  width: 300px;
+  height: 100vh;
+  background-color: #eee;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  overflow: auto;
 }

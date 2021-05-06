@@ -1,1 +1,1 @@
-new Cotton('a.logo')
+// new Cotton('a.logo')

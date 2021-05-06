@@ -96,7 +96,7 @@ export default class Cotton {
       
       el.style.top = `${mouseData.y}px`;
       el.style.left = `${mouseData.x}px`;
-      el.style.position = 'absolute';
+      el.style.position = 'fixed';
       el.style.marginLeft = `${ - (Cotton.getElementWidth(el) / 2) }px`;
       el.style.marginTop = `${ - (Cotton.getElementHeight(el) / 2) }px`;
     }
