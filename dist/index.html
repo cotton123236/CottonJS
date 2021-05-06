@@ -8,14 +8,71 @@
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+
+  <!-- overlay -->
+  <div class="overlay">
+    <svg id="arrow-cursor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <defs>
+        <mask id="cursor-pie-mask">
+          <path d="m50,100l0,-50l50,50l-50,0z" fill="#ffffff"></path>
+          <path d="m50,100l0,-50l50,50l-50,0z" fill="#ffffff" style="transform-origin: center;"></path>
+          <path d="m50,100l0,-50l50,50l-50,0z" fill="#ffffff" style="transform-origin: center;"></path>
+          <path d="m50,100l0,-50l50,50l-50,0z" fill="#ffffff" style="transform-origin: center;"></path>
+          <path d="m50,100l0,-50l50,50l-50,0z" fill="#ffffff" style="transform-origin: center;"></path>
+          <path d="m50,100l0,-50l50,50l-50,0z" fill="#ffffff" style="transform-origin: center;"></path>
+          <path d="m50,100l0,-50l50,50l-50,0z" fill="#ffffff" style="transform-origin: center;"></path>
+          <path d="m50,100l0,-50l50,50l-50,0z" fill="#ffffff" style="transform-origin: center;"></path>
+          <path d="m50,100l0,-50l50,50l-50,0z" fill="#ffffff" style="transform-origin: center;"></path>
+        </mask>
+      </defs>
+      <g mask="url(#cursor-pie-mask)" id="arrow-cursor-mask" transform="matrix(1,0,0,1,0,0)">
+        <ellipse ry="30" rx="30" id="svg_1" cy="50" cx="50" fill="#f9cbbd"></ellipse>
+      </g>
+    </svg>
+  </div>
+
+  <!-- header -->
   <header>
   </header>
+
+  <!-- main-wrapper -->
   <div class="main-wrapper">
     
     <!-- sidebar -->
     <div class="sidebar">
-      
+      <!-- sidebar-group -->
+      <ul class="sidebar-group">
+        <li>
+          <p>Getting Started</p>
+          <ul class="sidebar-item">
+            <li class="cotton-model">Download</li>
+            <li class="cotton-model">Installation</li>
+            <li class="cotton-model">Usage</li>
+          </ul>
+        </li>
+        <li>
+          <p>Documentation</p>
+          <ul class="sidebar-item">
+            <li class="cotton-model">Parameters</li>
+            <li class="cotton-model">Methods</li>
+            <li class="cotton-model">Callbacks</li>
+          </ul>
+        </li>
+      </ul>
     </div>
+
+    <!-- main -->
+    <main>
+      
+      <!-- section.intro -->
+      <section class="intro">
+        <div class="text-wrap">
+          <h1>Cotton.JS</h1>
+          <p>Cotton.JS is a JavaScript library which allows you to make a mouse-followed animation easily.<br><br><span>LIKE A FLOATING COTTON</span></p>
+        </div>
+      </section>
+
+    </main>
 
   </div>
 

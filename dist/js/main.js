@@ -1,1 +1,3 @@
-// new Cotton('a.logo')
+new Cotton('#arrow-cursor', {
+  speed: 1,
+})

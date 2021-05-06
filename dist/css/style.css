@@ -1,13 +1,148 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Philosopher:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Poppins:wght@200;400;600&display=swap');
 
-body {
-  font-family: 'Philosopher', 'Noto Sans TC', sans-serif;
+* {
+  cursor: none;
 }
 
-.sidebar {
-  width: 300px;
+body {
+  line-height: 1.2;
+  font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+}
+
+/* overlay */
+.overlay {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100vh;
-  background-color: #eee;
-  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
-  overflow: auto;
+  pointer-events: none;
+}
+#arrow-cursor {
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  transform: translate(-70px, -70px);
+}
+#arrow-cursor path:nth-child(2) {
+  transition: .4s;
+}
+#arrow-cursor path:nth-child(3) {
+  transition: .35s;
+}
+#arrow-cursor path:nth-child(4) {
+  transition: .3s;
+}
+#arrow-cursor path:nth-child(5) {
+  transition: .25s;
+}
+#arrow-cursor path:nth-child(6) {
+  transition: .2s;
+}
+#arrow-cursor path:nth-child(7) {
+  transition: .15s;
+}
+#arrow-cursor path:nth-child(8) {
+  transition: .1s;
+}
+#arrow-cursor path:nth-child(9) {
+  transition: .05s;
+}
+#arrow-cursor.cotton-active path:nth-child(2) {
+  transform: rotate(-320deg);
+}
+#arrow-cursor.cotton-active path:nth-child(3) {
+  transform: rotate(-280deg);
+}
+#arrow-cursor.cotton-active path:nth-child(4) {
+  transform: rotate(-240deg);
+}
+#arrow-cursor.cotton-active path:nth-child(5) {
+  transform: rotate(-200deg);
+}
+#arrow-cursor.cotton-active path:nth-child(6) {
+  transform: rotate(-160deg);
+}
+#arrow-cursor.cotton-active path:nth-child(7) {
+  transform: rotate(-120deg);
+}
+#arrow-cursor.cotton-active path:nth-child(8) {
+  transform: rotate(-80deg);
+}
+#arrow-cursor.cotton-active path:nth-child(9) {
+  transform: rotate(-40deg);
+}
+#arrow-cursor #arrow-cursor-main {
+  transition: .4s
+}
+#arrow-cursor.cotton-active #arrow-cursor-mask {
+  /* transform: matrix(1.3,0,0,1.3,-15,-15) !important; */
+  opacity: .5 !important;
+}
+
+/* sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  color: #fff;
+  background-color: #ff9c85;
+  padding: 40px 30px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.sidebar-group > li {
+  margin-bottom: 40px;
+}
+.sidebar-group p {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.sidebar-item > li {
+  font-weight: 200;
+  padding: 7px 0 7px 10px;
+  transition: .3s
+}
+.sidebar-item > li:hover {
+  padding: 7px 0 7px 15px;
+}
+
+/* main */
+main {
+  display: block;
+  margin-left: 250px;
+}
+main .container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* section.intro */
+section.intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  color: #fff;
+  background-color: #111;
+}
+section.intro h1 {
+  color: #ff9b85;
+  font-size: 150px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+section.intro p {
+  max-width: 500px;
+  line-height: 1.8;
+  margin: auto;
+}
+section.intro p span {
+  font-weight: 600;
+  color: #ff9b85;
 }

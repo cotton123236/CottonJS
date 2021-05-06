@@ -17,6 +17,8 @@ export default class Cotton {
         animationFrame: undefined
       },
       speed: 0.125,
+      resistance: 1,
+      central: true,
       cottonActiveClass: 'cotton-active',
       models: '.cotton-model',
       modelsActiveClass: 'model-active',
@@ -94,11 +96,8 @@ export default class Cotton {
       
       mouseData.animationFrame = requestAnimationFrame(animateMouse);
       
-      el.style.top = `${mouseData.y}px`;
-      el.style.left = `${mouseData.x}px`;
-      el.style.position = 'fixed';
-      el.style.marginLeft = `${ - (Cotton.getElementWidth(el) / 2) }px`;
-      el.style.marginTop = `${ - (Cotton.getElementHeight(el) / 2) }px`;
+      if (params.central) el.style.transform = `translate(calc( -50% + ${mouseData.x / params.resistance}px ), calc( -50% + ${mouseData.y / params.resistance}px ))`;
+      else el.style.transform = `translate(${mouseData.x / params.resistance}px, ${mouseData.y / params.resistance}px)`;
     }
     
     if (!mouseData.animationFrame) animateMouse();
