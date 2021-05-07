@@ -1,5 +1,5 @@
-import { mobileDetecter } from './utils/mobileDetecter'
-import { getRectWidth, getRectHeight } from './utils/rectGetter'
+import { isMobile } from './utils/isMobile'
+import { getRectWidth, getRectHeight, getRectTop, getRectLeft } from './utils/getRect'
 import { warn } from './utils/warn'
 import { bindCallback } from './utils/bindCallback'
 
@@ -17,11 +17,10 @@ export default class Cotton {
         animationFrame: undefined
       },
       speed: 0.125,
-      resistance: 1,
-      central: true,
       cottonActiveClass: 'cotton-active',
       models: '.cotton-model',
       modelsActiveClass: 'model-active',
+      bloomMode: false,
       on: {
         modelEnter: null,
         modelLeave: null
@@ -35,29 +34,15 @@ export default class Cotton {
     if (!this.element) return warn('Cannot define a element which is not exist');
     if (this.params.speed > 1 || this.params.speed <= 0) return warn('The speed property must be > 0 or <= 1');
 
-    if (!Cotton.isMobile()) this.init();
+    if (!isMobile()) this.init();
   }
 
   // private functions
-  // detect is mobile or not
-  static isMobile() {
-    return mobileDetecter();
-  }
-
-  // get target width
-  static getElementWidth(target) {
-    return getRectWidth(target);
-  }
-
-  // get target height
-  static getElementHeight(target) {
-    return getRectHeight(target);
-  }
-
   // callbacks when cotton element enter (leave) models
   static bindModelCallback(scope) {
-    if (scope.models.length !== 0) return bindCallback(scope);
+    if (scope.models.length !== 0) bindCallback(scope);
   }
+
 
   // public methods
   // init
@@ -95,9 +80,14 @@ export default class Cotton {
       }
       
       mouseData.animationFrame = requestAnimationFrame(animateMouse);
-      
-      if (params.central) el.style.transform = `translate(calc( -50% + ${mouseData.x / params.resistance}px ), calc( -50% + ${mouseData.y / params.resistance}px ))`;
-      else el.style.transform = `translate(${mouseData.x / params.resistance}px, ${mouseData.y / params.resistance}px)`;
+
+      if (params.bloomMode) {
+        if (typeof params.bloomMode !== 'object' || Array.isArray(params.bloomMode)) params.bloomMode = { resistance: 15, reverse: false }
+        const distanceX = params.bloomMode.reverse ? - (mouseData.x - (getRectLeft(el) + getRectWidth(el) / 2)) : (mouseData.x - (getRectLeft(el) + getRectWidth(el) / 2));
+        const distanceY = params.bloomMode.reverse ? - (mouseData.y - (getRectTop(el) + getRectHeight(el) / 2)) : (mouseData.y - (getRectTop(el) + getRectHeight(el) / 2));
+        el.style.transform = `translate(${distanceX / params.bloomMode.resistance}px, ${distanceY / params.bloomMode.resistance}px)`
+      }
+      else el.style.transform = `translate(calc(-50% + ${mouseData.x}px), calc(-50% + ${mouseData.y}px))`
     }
     
     if (!mouseData.animationFrame) animateMouse();
