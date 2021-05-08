@@ -16,11 +16,13 @@ export default class Cotton {
         dy: null,
         animationFrame: undefined
       },
-      speed: 0.125,
+      scene: 'body',
+      cottonInitClass: 'cotton-init',
       cottonActiveClass: 'cotton-active',
       models: '.cotton-model',
       modelsActiveClass: 'model-active',
-      bloomMode: false,
+      speed: 0.125,
+      airMode: false,
       on: {
         modelEnter: null,
         modelLeave: null
@@ -33,8 +35,9 @@ export default class Cotton {
     
     if (!this.element) return warn('Cannot define a element which is not exist');
     if (this.params.speed > 1 || this.params.speed <= 0) return warn('The speed property must be > 0 or <= 1');
+    if (this.params.airMode.resistance && this.params.airMode.resistance < 5) return warn('The resistance property must be >= 5');
 
-    if (!isMobile()) this.init();
+    if (!isMobile()) Cotton.init(this);
   }
 
   // private functions
@@ -46,9 +49,15 @@ export default class Cotton {
 
   // public methods
   // init
-  init() {
-    this.move();
-    Cotton.bindModelCallback(this);
+  static init(scope) {
+    const scene = document.querySelector(scope.params.scene);
+
+    if (!scene) return warn('Cannot define a scene which is not exist');
+
+    scene.addEventListener('mouseenter', function() { scope.move() });
+    scene.addEventListener('mouseleave', function() { scope.stop() });
+
+    Cotton.bindModelCallback(scope);
   }
 
   // anmate cotton element
@@ -56,6 +65,8 @@ export default class Cotton {
     const el = this.element;
     const params = this.params;
     const mouseData = params.data;
+
+    el.classList.add(params.cottonInitClass);
     
     document.addEventListener('mousemove', function(e) {
       mouseData.mouseX = e.clientX || e.pageX;
@@ -81,12 +92,17 @@ export default class Cotton {
       
       mouseData.animationFrame = requestAnimationFrame(animateMouse);
 
-      if (params.bloomMode) {
-        if (typeof params.bloomMode !== 'object' || Array.isArray(params.bloomMode)) params.bloomMode = { resistance: 15, reverse: false }
-        const distanceX = params.bloomMode.reverse ? - (mouseData.x - (getRectLeft(el) + getRectWidth(el) / 2)) : (mouseData.x - (getRectLeft(el) + getRectWidth(el) / 2));
-        const distanceY = params.bloomMode.reverse ? - (mouseData.y - (getRectTop(el) + getRectHeight(el) / 2)) : (mouseData.y - (getRectTop(el) + getRectHeight(el) / 2));
-        el.style.transform = `translate(${distanceX / params.bloomMode.resistance}px, ${distanceY / params.bloomMode.resistance}px)`
+      if (params.airMode) {
+        const airMode = params.airMode;
+
+        if (typeof airMode !== 'object' || Array.isArray(airMode)) airMode = { resistance: 15, reverse: false }
+
+        const distanceX = airMode.reverse ? - (mouseData.x - (getRectLeft(el) + getRectWidth(el) / 2)) : (mouseData.x - (getRectLeft(el) + getRectWidth(el) / 2));
+        const distanceY = airMode.reverse ? - (mouseData.y - (getRectTop(el) + getRectHeight(el) / 2)) : (mouseData.y - (getRectTop(el) + getRectHeight(el) / 2));
+
+        el.style.transform = `translate(${distanceX / airMode.resistance}px, ${distanceY / airMode.resistance}px)`
       }
+
       else el.style.transform = `translate(calc(-50% + ${mouseData.x}px), calc(-50% + ${mouseData.y}px))`
     }
     
@@ -98,6 +114,7 @@ export default class Cotton {
     const mouseData = this.params.data;
     cancelAnimationFrame(mouseData.animationFrame);
     mouseData.animationFrame = undefined;
+    this.element.classList.remove(this.params.cottonInitClass);
   }
 
   // update models binding
