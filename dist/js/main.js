@@ -16,12 +16,12 @@ $(function() {
   
   const h1 = new Cotton('h1', {
     airMode: {
-      resistance: 30
+      resistance: 1
     }
-  })
+  });
   const h1Shadow = new Cotton('.h1-shadow', {
     airMode: {
-      resistance: 20
+      resistance: 1
     }
   })
   hljs.highlightAll();

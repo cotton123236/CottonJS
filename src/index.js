@@ -1,7 +1,8 @@
+import { warn } from './utils/warn'
 import { isMobile } from './utils/isMobile'
 import { getRectWidth, getRectHeight, getRectTop, getRectLeft } from './utils/getRect'
-import { warn } from './utils/warn'
-import { bindCallback } from './utils/bindCallback'
+import { cottonAnimation, airModeAnimation } from './core/animationFrame'
+import { bindCallback } from './core/bindCallback'
 
 export default class Cotton {
 
@@ -10,6 +11,8 @@ export default class Cotton {
       data: {
         mouseX: null,
         mouseY: null,
+        distanceX: null,
+        distanceY: null,
         x: null,
         y: null,
         dx: null,
@@ -33,9 +36,8 @@ export default class Cotton {
     this.params = Object.assign({}, defaults, options);
     this.models = document.querySelectorAll(this.params.models);
     
-    if (!this.element) return warn('Cannot define a element which is not exist');
-    if (this.params.speed > 1 || this.params.speed <= 0) return warn('The speed property must be > 0 or <= 1');
-    if (this.params.airMode.resistance && this.params.airMode.resistance < 5) return warn('The resistance property must be >= 5');
+    if (!this.element) return warn('Cannot define a cotton element which is not exist');
+    if (this.params.speed > 1 || this.params.speed <= 0) this.params.speed = 0.125;
 
     if (!isMobile()) Cotton.init(this);
   }
@@ -65,48 +67,20 @@ export default class Cotton {
     const el = this.element;
     const params = this.params;
     const mouseData = params.data;
+    const airMode = params.airMode;
 
     el.classList.add(params.cottonInitClass);
     
     document.addEventListener('mousemove', function(e) {
-      mouseData.mouseX = e.clientX || e.pageX;
-      mouseData.mouseY = e.clientY || e.pageY;
+      mouseData.mouseX = e.clientX;
+      mouseData.mouseY = e.clientY;
+      if (airMode) {
+        mouseData.distanceY = Math.floor(mouseData.mouseY - (getRectTop(el) + getRectHeight(el) / 2));
+        mouseData.distanceX = Math.floor(mouseData.mouseX - (getRectLeft(el) + getRectWidth(el) / 2));
+      }
     });
     
-    function animateMouse() {
-      
-      if (!mouseData.x || !mouseData.y) {
-        mouseData.x = mouseData.mouseX;
-        mouseData.y = mouseData.mouseY;
-      } else {
-        mouseData.dx = (mouseData.mouseX - mouseData.x) * params.speed;
-        mouseData.dy = (mouseData.mouseY - mouseData.y) * params.speed;
-        if (Math.abs(mouseData.dx) + Math.abs(mouseData.dy) < 0.1) {
-          mouseData.x = mouseData.mouseX;
-          mouseData.y = mouseData.mouseY;
-        } else {
-          mouseData.x += mouseData.dx;
-          mouseData.y += mouseData.dy;
-        }
-      }
-      
-      mouseData.animationFrame = requestAnimationFrame(animateMouse);
-
-      if (params.airMode) {
-        const airMode = params.airMode;
-
-        if (typeof airMode !== 'object' || Array.isArray(airMode)) airMode = { resistance: 15, reverse: false }
-
-        const distanceX = airMode.reverse ? - (mouseData.x - (getRectLeft(el) + getRectWidth(el) / 2)) : (mouseData.x - (getRectLeft(el) + getRectWidth(el) / 2));
-        const distanceY = airMode.reverse ? - (mouseData.y - (getRectTop(el) + getRectHeight(el) / 2)) : (mouseData.y - (getRectTop(el) + getRectHeight(el) / 2));
-
-        el.style.transform = `translate(${distanceX / airMode.resistance}px, ${distanceY / airMode.resistance}px)`
-      }
-
-      else el.style.transform = `translate(calc(-50% + ${mouseData.x}px), calc(-50% + ${mouseData.y}px))`
-    }
-    
-    if (!mouseData.animationFrame) animateMouse();
+    if (!mouseData.animationFrame) airMode ? airModeAnimation(this) : cottonAnimation(this);
   }
 
   // stop animation

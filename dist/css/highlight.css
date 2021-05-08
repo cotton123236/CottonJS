@@ -8,7 +8,7 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
   display: block;
   overflow-x: auto;
   line-height: 1.4;
-  padding: 1.5em 0.5em;
+  padding: 20px;
   background: #F0F0F0;
   font-size: 14px;
 }
@@ -65,12 +65,12 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 
 
 /* Language color: hue: 90; */
-
+.language-javascript .hljs-number,
 .hljs-literal {
   color: #78A960;
 }
 
-.hljs-built_in,
+/* .hljs-built_in, */
 .hljs-bullet,
 .hljs-code,
 .hljs-addition {

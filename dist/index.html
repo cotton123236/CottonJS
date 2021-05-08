@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Cotton.JS Documentation</title>
   <link rel="stylesheet" href="./css/reset.css">
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/styles/default.min.css"> -->
   <link rel="stylesheet" href="./css/highlight.css">
@@ -85,15 +85,15 @@
         <div class="container">
 
           <!-- #started -->
-          <article id="started">
-            <h2>Getting Started</h2>
+          <article>
+            <h2 id="started">Getting Started</h2>
             <hr>
             <div class="content-wrap">
               <h3 id="download">Download</h3>
               <h4>Via npm</h4>
-              <pre><code>    npm install cotton    </code></pre>
+              <pre><code>npm install cotton</code></pre>
               <h4>Via CDN</h4>
-              <pre><code class="language-html">    &lt;script src="https://cdn.jsdelivr.net/gh/fluffy-factory/magnet-mouse@latest/lib/magnet-mouse.min.js">&lt;/script>    </code></pre>
+              <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/fluffy-factory/magnet-mouse@latest/lib/magnet-mouse.min.js">&lt;/script></code></pre>
               <h4>Manual download</h4>
               <div class="btn-wrap"><a class="pill-btn hollow" data-cursor-model href="https://github.com/cotton123236/cotton.js/archive/refs/heads/main.zip">Download ZIP</a></div>
             </div>
@@ -101,39 +101,40 @@
               <h3 id="installation">Installation</h3>
               <h4>ES modules</h4>
               <p>After Download the files from npm, all you need is typing the following code :</p>
-              <pre><code class="language-javascript">    import Cotton from 'cotton'    </code></pre>
+              <pre><code class="language-javascript">import Cotton from 'cotton'</code></pre>
               <h4>Script tag include</h4>
               <p>Simply download (or using CDN) and include with a script tag.</p>
-              <pre><code class="language-html">    &lt;script src="cotton.js">&lt;/script>    </code></pre>
+              <pre><code class="language-html">&lt;script src="cotton.js">&lt;/script></code></pre>
             </div>
             <div class="content-wrap">
               <h3 id="usage">Basic Usage</h3>
               <h4>HTML</h4>
               <p>Create an element that you would like to animate.</p>
-              <pre><code class="language-html">    &lt;div id="#cotton-cursor">&lt;/div>    </code></pre>
+              <pre><code class="language-html">&lt;div id="#cotton-cursor">&lt;/div></code></pre>
               <h4>CSS</h4>
               <p>Style your element.</p>
               <p class="tips">If you want to make a mouse-following element, you have to set the position property as <span class="bold">fixed</span>.</p>
-              <pre><code class="language-css" style="padding: .2em .5em;">
-    #cotton-cursor {
-        position: fixed;
-        z-index: 9;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        pointer-events: none;
-        background-color: #f9cabc;
-    }
+              <pre><code class="language-css narrow">
+#cotton-cursor {
+    position: fixed;
+    z-index: 9;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    pointer-events: none;
+    background-color: #f9cabc;
+    transform: translate(-20px, -20px);    /* move out from window before cotton init */
+}
               </code></pre>
               <h4>JavaScript</h4>
               <p>Initialize Cotton in JavaScript.</p>
-              <pre><code class="language-javascript">    const cottonCursor = new Cotton('#cotton-cursor')</code></pre>
+              <pre><code class="language-javascript">const cottonCursor = new Cotton('#cotton-cursor')</code></pre>
             </div>
           </article>
 
           <!-- #documentation -->
-          <article id="documentation">
-            <h2>Documentation</h2>
+          <article>
+            <h2 id="documentation">Documentation</h2>
             <hr>
             <div class="content-wrap">
               <h3 id="parameters">Parameters</h3>
@@ -156,19 +157,19 @@
                     <td class="w-20 ter-color bold">scene</td>
                     <td class="w-15 gray-color bold">string</td>
                     <td class="w-20 ter-color bold">'body'</td>
-                    <td class="w-45 thin">The animation would start when the mouse enter the scene, and would stop when the mouse leave the scene.</td>
+                    <td class="w-45 thin">The animation will start when the mouse enter the scene, and stop when the mouse leave the scene.</td>
                   </tr>
                   <tr>
                     <td class="w-20 ter-color bold">cottonInitClass</td>
                     <td class="w-15 gray-color bold">string</td>
                     <td class="w-20 ter-color bold">'cotton-init'</td>
-                    <td class="w-45 thin">The cottonInitClass would be added when cotton is initialized, and it would be removed when you call the <span class="hilite">stop()</span> method.</td>
+                    <td class="w-45 thin">The cottonInitClass will be added when cotton is initialized, and be removed when you call the <span class="hilite">stop()</span> method.</td>
                   </tr>
                   <tr>
                     <td class="w-20 ter-color bold">cottonActiveClass</td>
                     <td class="w-15 gray-color bold">string</td>
                     <td class="w-20 ter-color bold">'cotton-active'</td>
-                    <td class="w-45 thin">The cottonActiveClass would be added on cotton when mouse enter the models, and it would be removed mouse leave the models.</td>
+                    <td class="w-45 thin">The cottonActiveClass will be added on cotton when mouse enter the models, and be removed mouse leave the models.</td>
                   </tr>
                   <tr>
                     <td class="w-20 ter-color bold">models</td>
@@ -180,21 +181,43 @@
                     <td class="w-20 ter-color bold">modelsActiveClass</td>
                     <td class="w-15 gray-color bold">string</td>
                     <td class="w-20 ter-color bold">'model-active'</td>
-                    <td class="w-45 thin">The modelsActiveClass would be added on model when mouse enter the model, and it would be removed mouse leave the model.</td>
+                    <td class="w-45 thin">The modelsActiveClass will be added on model when mouse enter the model, and be removed mouse leave the model.</td>
                   </tr>
                   <tr>
                     <td class="w-20 ter-color bold">speed</td>
                     <td class="w-15 gray-color bold">number</td>
                     <td class="w-20 ter-color bold">0.125</td>
-                    <td class="w-45 thin">The lower the number, the greater the delay<br><br>
-                      <p class="tips">The speed property must be <span class="bold">> 0</span> or <span class="bold"><= 1</span></p>
+                    <td class="w-45 thin">The lower the number, the greater the delay
+                      <p class="tips">The speed property must be <span class="bold">> 0</span> and <span class="bold"><= 1</span>.<br>If this parameter is not specified, it will be set to default.</p>
                     </td>
                   </tr>
                   <tr>
                     <td class="w-20 ter-color bold">airMode</td>
                     <td class="w-15 gray-color bold">boolean | object</td>
                     <td class="w-20 ter-color bold">false</td>
-                    <td class="w-45 thin"></td>
+                    <td class="w-45 thin">By default, the cotton element will relative to the top left of the window when doing the transform.<br>If set to <span class="hilite">true</span>, then cotton will do the transform relative to its own center point. And the following properties will be set automatically.<br>
+                      <pre><code class="language-javascript narrow">
+airMode: {
+    resistance: 15,
+    reverse: false
+}
+                      </code></pre>
+                    or you can just set an object with specified properties directly.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="w-20 ter-color bold">airMode.resistance</td>
+                    <td class="w-15 gray-color bold">number</td>
+                    <td class="w-20 ter-color bold">15</td>
+                    <td class="w-45 thin">The higher the number, the less the transform.
+                      <p class="tips">The resistance property must be <span class="bold">>= 5</span> and <span class="bold"><= 100</span>.<br>If this parameter is not specified, it will be set to default.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="w-20 ter-color bold">airMode.reverse</td>
+                    <td class="w-15 gray-color bold">boolean</td>
+                    <td class="w-20 ter-color bold">false</td>
+                    <td class="w-45 thin">By default, the airMode cotton will move forward to the mouse.<br>If set to <span class="hilite">true</span>, the airMode cotton will move backward to the mouse.</td>
                   </tr>
                 </tbody>
               </table>

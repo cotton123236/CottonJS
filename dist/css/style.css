@@ -62,6 +62,9 @@ pre {
   border-radius: 5px;
   overflow: hidden;
 }
+pre code.narrow {
+  padding: 0 20px;
+}
 .bold {
   font-weight: 600;
 }
@@ -127,6 +130,12 @@ th {
 td {
   vertical-align: middle;
 }
+table pre {
+  margin: 8px 0;
+}
+table .tips {
+  margin-top: 12px;
+}
 .ter-color {
   color: var(--tertiary-color);
 }
@@ -151,6 +160,7 @@ td {
   z-index: 9;
   width: 70px;
   height: 70px;
+  transform: translate(-70px, -70px);
   pointer-events: none;
 }
 #arrow-cursor path:nth-child(2) {
@@ -217,7 +227,7 @@ td {
   position: fixed;
   top: 0;
   left: 0;
-  width: 250px;
+  width: 240px;
   height: 100vh;
   color: #fff;
   background-color: var(--primary-color);
@@ -245,15 +255,25 @@ td {
 .sidebar-item > li a:hover {
   padding: 7px 0 7px 20px;
 }
+@media screen and (max-width: 1024px) {
+  .sidebar {
+    display: none;
+  }
+}
 
 /* main */
 main {
   display: block;
-  margin-left: 250px;
+  margin-left: 240px;
 }
 main .container {
   max-width: 1000px;
   margin: auto;
+}
+@media screen and (max-width: 1024px) {
+  main {
+    margin-left: 0;
+  }
 }
 
 /* section.intro */
@@ -271,7 +291,7 @@ section.intro {
 section.intro .title {
   position: relative;
 }
-section.intro h1, section.intro .h1-shadow{
+section.intro h1, section.intro .h1-shadow {
   color: var(--primary-color);
   font-size: 160px;
   font-weight: 600;
@@ -309,17 +329,22 @@ section.intro p span {
 section.intro .btn-wrap .pill-btn {
   margin: 0 10px;
 }
+@media screen and (max-width: 1100px) {
+  section.intro h1, section.intro .h1-shadow {
+    font-size: 140px;
+  }
+}
 
 /* content-block */
 section.content-block {
-  padding: 0 45px;
+  padding: 0 60px;
 }
 section.content-block .container {
   max-width: 1000px;
   margin: auto;
 }
 section.content-block article {
-  padding: 100px 45px 20px;
+  padding: 100px 0 20px;
 }
 section.content-block .content-wrap {
   padding-top: 60px;
