@@ -16,16 +16,16 @@ $(function() {
   
   const h1 = new Cotton('h1', {
     airMode: {
-      resistance: 1
+      resistance: 30
     }
   });
   const h1Shadow = new Cotton('.h1-shadow', {
     airMode: {
-      resistance: 1
+      resistance: 20
     }
-  })
+  });
   hljs.highlightAll();
-
+;
   gradientText();
 });
 

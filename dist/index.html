@@ -55,7 +55,7 @@
           <p><a href="#documentation" data-cursor-model data-cursor-color="white">Documentation</a></p>
           <ul class="sidebar-item">
             <li><a href="#parameters" data-cursor-model data-cursor-color="white">Parameters</a></li>
-            <li><a href="#" data-cursor-model data-cursor-color="white">Methods</a></li>
+            <li><a href="#methods" data-cursor-model data-cursor-color="white">Methods</a></li>
             <li><a href="#" data-cursor-model data-cursor-color="white">Callbacks</a></li>
           </ul>
         </li>
@@ -86,10 +86,11 @@
 
           <!-- #started -->
           <article>
-            <h2 id="started">Getting Started</h2>
+            <h2 id="started"><a class="hash" href="#started" data-cursor-model>Getting Started</a></h2>
             <hr>
+            <!-- download -->
             <div class="content-wrap">
-              <h3 id="download">Download</h3>
+              <h3 id="download"><a class="hash" href="#download" data-cursor-model>Download</a></h3>
               <h4>Via npm</h4>
               <pre><code>npm install cotton</code></pre>
               <h4>Via CDN</h4>
@@ -97,8 +98,9 @@
               <h4>Manual download</h4>
               <div class="btn-wrap"><a class="pill-btn hollow" data-cursor-model href="https://github.com/cotton123236/cotton.js/archive/refs/heads/main.zip">Download ZIP</a></div>
             </div>
+            <!-- installation -->
             <div class="content-wrap">
-              <h3 id="installation">Installation</h3>
+              <h3 id="installation"><a class="hash" href="#installation" data-cursor-model>Installation</a></h3>
               <h4>ES modules</h4>
               <p>After Download the files from npm, all you need is typing the following code :</p>
               <pre><code class="language-javascript">import Cotton from 'cotton'</code></pre>
@@ -106,8 +108,9 @@
               <p>Simply download (or using CDN) and include with a script tag.</p>
               <pre><code class="language-html">&lt;script src="cotton.js">&lt;/script></code></pre>
             </div>
+            <!-- usage -->
             <div class="content-wrap">
-              <h3 id="usage">Basic Usage</h3>
+              <h3 id="usage"><a class="hash" href="#usage" data-cursor-model>Basic Usage</a></h3>
               <h4>HTML</h4>
               <p>Create an element that you would like to animate.</p>
               <pre><code class="language-html">&lt;div id="#cotton-cursor">&lt;/div></code></pre>
@@ -134,10 +137,11 @@
 
           <!-- #documentation -->
           <article>
-            <h2 id="documentation">Documentation</h2>
+            <h2 id="documentation"><a class="hash" href="#documentation" data-cursor-model>Documentation</a></h2>
             <hr>
+            <!-- parameters -->
             <div class="content-wrap">
-              <h3 id="parameters">Parameters</h3>
+              <h3 id="parameters"><a class="hash" href="#parameters" data-cursor-model>Parameters</a></h3>
               <p class="tips">
                 <span class="bold">Cotton : </span>which means the element that you initialize.<br>
                 <span class="bold">Models : </span>which means the elements that would interact with your cotton.
@@ -203,6 +207,7 @@ airMode: {
 }
                       </code></pre>
                     or you can just set an object with specified properties directly.
+                    <p class="tips">In airMode, the transform value will not increase if cotton is not in viewport.</p>
                     </td>
                   </tr>
                   <tr>
@@ -210,7 +215,7 @@ airMode: {
                     <td class="w-15 gray-color bold">number</td>
                     <td class="w-20 ter-color bold">15</td>
                     <td class="w-45 thin">The higher the number, the less the transform.
-                      <p class="tips">The resistance property must be <span class="bold">>= 5</span> and <span class="bold"><= 100</span>.<br>If this parameter is not specified, it will be set to default.</p>
+                      <p class="tips">The resistance property must be <span class="bold">>= 1</span> and <span class="bold"><= 100</span>.<br>If this parameter is not specified, it will be set to default.<br>If set to 1, cotton will follow the mouse completely.</p>
                     </td>
                   </tr>
                   <tr>
@@ -221,6 +226,10 @@ airMode: {
                   </tr>
                 </tbody>
               </table>
+            </div>
+            <!-- methods -->
+            <div class="content-wrap">
+              <h3 id="methods"><a class="hash" href="#methods" data-cursor-model>Methods</a></h3>
             </div>
           </article>
           

@@ -30,9 +30,6 @@ export function airModeAnimation(scope) {
   const params = scope.params;
   const mouseData = params.data;
   const airMode = params.airMode;
-
-  if (typeof airMode !== 'object' || Array.isArray(airMode)) airMode = { resistance: 15, reverse: false }
-  // if (airMode.resistance < 5 || airMode.resistance > 100) airMode.resistance = 15;
   
   if (!mouseData.distanceX || !mouseData.distanceY) {
     mouseData.x = mouseData.distanceX;
@@ -53,5 +50,8 @@ export function airModeAnimation(scope) {
     airModeAnimation(scope);
   });
 
-  el.style.transform = `translate(${mouseData.x / airMode.resistance}px, ${mouseData.y / airMode.resistance}px)`
+  const airX = airMode.reverse ? - mouseData.x : mouseData.x
+  const airY = airMode.reverse ? - mouseData.y : mouseData.y
+
+  el.style.transform = `translate(${Math.floor(airX / airMode.resistance)}px, ${Math.floor(airY / airMode.resistance)}px)`
 }

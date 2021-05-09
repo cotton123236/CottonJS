@@ -8,7 +8,7 @@
 
 :root {
   scroll-padding-top: 50px;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
   --primary-color: #ff9c85;
   --secondary-color: #f9cabc;
   --tertiary-color: #ff6847;
@@ -56,6 +56,22 @@ h4 {
   font-size: 18px;
   line-height: 1.4;
   margin-bottom: 10px;
+}
+.hash {
+  position: relative;
+}
+.hash:hover::before {
+  opacity: 1;
+}
+.hash::before {
+  position: absolute;
+  content: "#";
+  left: -10px;
+  transform: translateX(-100%);
+  font-weight: 400;
+  color: var(--tertiary-color);
+  opacity: 0;
+  transition: .3s;
 }
 pre {
   margin-bottom: 20px;
@@ -348,7 +364,6 @@ section.content-block article {
 }
 section.content-block .content-wrap {
   padding-top: 60px;
-  padding-bottom: 20px;
 }
 section.content-block .content-wrap .btn-wrap {
   padding-top: 10px;
