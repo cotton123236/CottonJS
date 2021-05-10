@@ -64,7 +64,7 @@ export default class Cotton {
     if (!scene) return warn('Cannot define a scene which is not exist');
     
     scene.addEventListener('mouseenter', function() { scope.move() });
-    scene.addEventListener('mouseleave', function() { scope.stop() });
+    scene.addEventListener('mouseleave', function() { Cotton.setData(scope, false) });
 
     Cotton.bindModelCallback(scope);
   }
@@ -123,8 +123,6 @@ export default class Cotton {
   // stop animation
   stop() {
     const mouseData = this.params.data;
-
-    Cotton.setData(this, false);
 
     this.element.classList.remove(this.params.cottonInitClass);
 

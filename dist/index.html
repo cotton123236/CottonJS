@@ -230,13 +230,28 @@ airMode: {
             <!-- methods -->
             <div class="content-wrap">
               <h3 id="methods"><a class="hash" href="#methods" data-cursor-model>Methods</a></h3>
-              <p>After you initialize the cotton element, you can use the methods of its initialized instance in the variable.<br><br>As the following example :</p>
+              <p>After you initialize the cotton element, you can use the methods of its initialized instance in the variable.<br>As the following example :</p>
               <pre><code class="language-javascript narrow">
-const cottonCursor = new Cotton('#cotton-cursor')
+const cotton = new Cotton('#cotton-cursor')
 
-// call the stop method of cottonCursor
-cottonCursor.stop()
+// call the stop method of cotton
+cotton.stop()
               </code></pre>
+              <p>All available methods :</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="w-35 ter-color bold">cotton.stop()</td>
+                    <td class="w-65 thin">Cancel the animation immediately.<br>The cotton element will not interact with the mouse. And the <span class="hilite">cottonInitClass</span> will be removed when you call this method.</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </article>
           

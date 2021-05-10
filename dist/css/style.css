@@ -164,8 +164,28 @@ table .tips {
 .w-15 {
   width: 15%;
 }
+.w-35 {
+  width: 35%
+}
 .w-45 {
   width: 45%
+}
+.w-65 {
+  width: 65%
+}
+@media screen and (max-width: 900px) {
+  h2 {
+    font-size: 28px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 16px;
+  }
+  p, .pill-btn {
+    font-size: 14px;
+  }
 }
 
 
@@ -282,10 +302,6 @@ main {
   display: block;
   margin-left: 240px;
 }
-main .container {
-  max-width: 1000px;
-  margin: auto;
-}
 @media screen and (max-width: 1024px) {
   main {
     margin-left: 0;
@@ -350,13 +366,18 @@ section.intro .btn-wrap .pill-btn {
     font-size: 140px;
   }
 }
+@media screen and (max-width: 900px) {
+  section.intro h1, section.intro .h1-shadow {
+    font-size: 120px;
+  }
+}
 
 /* content-block */
 section.content-block {
   padding: 0 60px;
 }
 section.content-block .container {
-  max-width: 1000px;
+  max-width: 1400px;
   margin: auto;
 }
 section.content-block article {

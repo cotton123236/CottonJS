@@ -1,5 +1,5 @@
 $(function() {
-  const cursor = new Cotton('#arrow-cursor', {
+  window.cursor = new Cotton('#arrow-cursor', {
     speed: 1,
     models: '[data-cursor-model]',
     on: {
