@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;600&display=swap');
 
 @keyframes bgMove {
   from { background-position-x: 0%; }
@@ -74,12 +75,16 @@ h4 {
   transition: .3s;
 }
 pre {
+  font-family: 'Roboto Mono';
   margin-bottom: 20px;
   border-radius: 5px;
   overflow: hidden;
 }
 pre code.narrow {
   padding: 0 20px;
+}
+.mono {
+  font-family: 'Roboto Mono';
 }
 .bold {
   font-weight: 600;
@@ -89,6 +94,7 @@ pre code.narrow {
   color: #444;
 }
 .hilite {
+  font-family: 'Roboto Mono';
   background-color: #f0f0f0;
   padding-left: 5px;
   padding-right: 5px;
@@ -173,6 +179,7 @@ table .tips {
 .w-65 {
   width: 65%
 }
+
 @media screen and (max-width: 900px) {
   h2 {
     font-size: 28px;
@@ -385,6 +392,7 @@ section.content-block article {
 }
 section.content-block .content-wrap {
   padding-top: 60px;
+  padding-bottom: 20px;
 }
 section.content-block .content-wrap .btn-wrap {
   padding-top: 10px;

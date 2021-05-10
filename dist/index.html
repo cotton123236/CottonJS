@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cotton.JS Documentation</title>
   <link rel="stylesheet" href="./css/reset.css">
-  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/styles/default.min.css"> -->
   <link rel="stylesheet" href="./css/highlight.css">
-  <!-- <link rel="stylesheet" href="./css/prism.css"> -->
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -56,7 +54,7 @@
           <ul class="sidebar-item">
             <li><a href="#parameters" data-cursor-model data-cursor-color="white">Parameters</a></li>
             <li><a href="#methods" data-cursor-model data-cursor-color="white">Methods</a></li>
-            <li><a href="#" data-cursor-model data-cursor-color="white">Callbacks</a></li>
+            <li><a href="#callbacks" data-cursor-model data-cursor-color="white">Callbacks</a></li>
           </ul>
         </li>
       </ul>
@@ -158,47 +156,53 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="w-20 ter-color bold">scene</td>
-                    <td class="w-15 gray-color bold">string</td>
-                    <td class="w-20 ter-color bold">'body'</td>
-                    <td class="w-45 thin">The animation will start when the mouse enter the scene, and stop when the mouse leave the scene.</td>
+                    <td class="w-20 ter-color bold mono">scene</td>
+                    <td class="w-15 gray-color bold mono">string</td>
+                    <td class="w-20 ter-color bold mono">'body'</td>
+                    <td class="w-45 thin">The animation will work when only the mouse is moving in the scene.</td>
                   </tr>
                   <tr>
-                    <td class="w-20 ter-color bold">cottonInitClass</td>
-                    <td class="w-15 gray-color bold">string</td>
-                    <td class="w-20 ter-color bold">'cotton-init'</td>
-                    <td class="w-45 thin">The cottonInitClass will be added when cotton is initialized, and be removed when you call the <span class="hilite">stop()</span> method.</td>
+                    <td class="w-20 ter-color bold mono">cottonInitClass</td>
+                    <td class="w-15 gray-color bold mono">string</td>
+                    <td class="w-20 ter-color bold mono">'cotton-init'</td>
+                    <td class="w-45 thin">The cottonInitClass will be added when cotton is initialized, and will be removed when you call the <span class="hilite">stop()</span> method.</td>
                   </tr>
                   <tr>
-                    <td class="w-20 ter-color bold">cottonActiveClass</td>
-                    <td class="w-15 gray-color bold">string</td>
-                    <td class="w-20 ter-color bold">'cotton-active'</td>
-                    <td class="w-45 thin">The cottonActiveClass will be added on cotton when mouse enter the models, and be removed mouse leave the models.</td>
+                    <td class="w-20 ter-color bold mono">cottonMovingClass</td>
+                    <td class="w-15 gray-color bold mono">string</td>
+                    <td class="w-20 ter-color bold mono">'cotton-moving'</td>
+                    <td class="w-45 thin">The cottonMovingClass will be added when the mouse enter the scene, and will be removed when the mouse leave the scene.<br><p class="tips">cottonMovingClass will also be removed when you call the <span class="hilite">stop()</span> method.</p></td>
                   </tr>
                   <tr>
-                    <td class="w-20 ter-color bold">models</td>
-                    <td class="w-15 gray-color bold">string</td>
-                    <td class="w-20 ter-color bold">'.cotton-model'</td>
+                    <td class="w-20 ter-color bold mono">cottonActiveClass</td>
+                    <td class="w-15 gray-color bold mono">string</td>
+                    <td class="w-20 ter-color bold mono">'cotton-active'</td>
+                    <td class="w-45 thin">The cottonActiveClass will be added on cotton when mouse enter the models, and will be removed mouse leave the models.</td>
+                  </tr>
+                  <tr>
+                    <td class="w-20 ter-color bold mono">models</td>
+                    <td class="w-15 gray-color bold mono">string</td>
+                    <td class="w-20 ter-color bold mono">'.cotton-model'</td>
                     <td class="w-45 thin">Define the elements that you want your cotton to interact with.</td>
                   </tr>
                   <tr>
-                    <td class="w-20 ter-color bold">modelsActiveClass</td>
-                    <td class="w-15 gray-color bold">string</td>
-                    <td class="w-20 ter-color bold">'model-active'</td>
-                    <td class="w-45 thin">The modelsActiveClass will be added on model when mouse enter the model, and be removed mouse leave the model.</td>
+                    <td class="w-20 ter-color bold mono">modelsActiveClass</td>
+                    <td class="w-15 gray-color bold mono">string</td>
+                    <td class="w-20 ter-color bold mono">'model-active'</td>
+                    <td class="w-45 thin">The modelsActiveClass will be added on model when mouse enter the model, and will be removed mouse leave the model.</td>
                   </tr>
                   <tr>
-                    <td class="w-20 ter-color bold">speed</td>
-                    <td class="w-15 gray-color bold">number</td>
-                    <td class="w-20 ter-color bold">0.125</td>
+                    <td class="w-20 ter-color bold mono">speed</td>
+                    <td class="w-15 gray-color bold mono">number</td>
+                    <td class="w-20 ter-color bold mono">0.125</td>
                     <td class="w-45 thin">The lower the number, the greater the delay
                       <p class="tips">The speed property must be <span class="bold">> 0</span> and <span class="bold"><= 1</span>.<br>If this parameter is not specified, it will be set to default.</p>
                     </td>
                   </tr>
                   <tr>
-                    <td class="w-20 ter-color bold">airMode</td>
-                    <td class="w-15 gray-color bold">boolean | object</td>
-                    <td class="w-20 ter-color bold">false</td>
+                    <td class="w-20 ter-color bold mono">airMode</td>
+                    <td class="w-15 gray-color bold mono">boolean | object</td>
+                    <td class="w-20 ter-color bold mono">false</td>
                     <td class="w-45 thin">By default, the cotton element will relative to the top left of the window when doing the transform.<br>If set to <span class="hilite">true</span>, then cotton will do the transform relative to its own center point. And the following properties will be set automatically.<br>
                       <pre><code class="language-javascript narrow">
 airMode: {
@@ -211,17 +215,17 @@ airMode: {
                     </td>
                   </tr>
                   <tr>
-                    <td class="w-20 ter-color bold">airMode.resistance</td>
-                    <td class="w-15 gray-color bold">number</td>
-                    <td class="w-20 ter-color bold">15</td>
+                    <td class="w-20 ter-color bold mono">airMode.resistance</td>
+                    <td class="w-15 gray-color bold mono">number</td>
+                    <td class="w-20 ter-color bold mono">15</td>
                     <td class="w-45 thin">The higher the number, the less the transform.
                       <p class="tips">The resistance property must be <span class="bold">>= 1</span> and <span class="bold"><= 100</span>.<br>If this parameter is not specified, it will be set to default.<br>If set to 1, cotton will follow the mouse completely.</p>
                     </td>
                   </tr>
                   <tr>
-                    <td class="w-20 ter-color bold">airMode.reverse</td>
-                    <td class="w-15 gray-color bold">boolean</td>
-                    <td class="w-20 ter-color bold">false</td>
+                    <td class="w-20 ter-color bold mono">airMode.reverse</td>
+                    <td class="w-15 gray-color bold mono">boolean</td>
+                    <td class="w-20 ter-color bold mono">false</td>
                     <td class="w-45 thin">By default, the airMode cotton will move forward to the mouse.<br>If set to <span class="hilite">true</span>, the airMode cotton will move backward to the mouse.</td>
                   </tr>
                 </tbody>
@@ -230,7 +234,7 @@ airMode: {
             <!-- methods -->
             <div class="content-wrap">
               <h3 id="methods"><a class="hash" href="#methods" data-cursor-model>Methods</a></h3>
-              <p>After you initialize the cotton element, you can use the methods of its initialized instance in the variable.<br>As the following example :</p>
+              <p>After you initialize the cotton element, you can use the methods of its initialized instance in the variable. As the following example :</p>
               <pre><code class="language-javascript narrow">
 const cotton = new Cotton('#cotton-cursor')
 
@@ -241,21 +245,29 @@ cotton.stop()
               <table>
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Type</th>
+                    <th>Methods</th>
+                    <th>Description</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="w-35 ter-color bold">cotton.stop()</td>
+                    <td class="w-35 ter-color bold mono">cotton.stop()</td>
                     <td class="w-65 thin">Cancel the animation immediately.<br>The cotton element will not interact with the mouse. And the <span class="hilite">cottonInitClass</span> will be removed when you call this method.</td>
                   </tr>
                   <tr>
-                    <td class="w-35 ter-color bold">cotton.move()</td>
-                    <td class="w-65 thin">Cancel the animation immediately.<br>The cotton element will not interact with the mouse. And the <span class="hilite">cottonInitClass</span> will be removed when you call this method.</td>
+                    <td class="w-35 ter-color bold mono">cotton.move()</td>
+                    <td class="w-65 thin">Restart the animation.<br>And the <span class="hilite">cottonInitClass</span> will be added again when you call this method.</td>
+                  <tr>
+                    <td class="w-35 ter-color bold mono">cotton.updateModels()</td>
+                    <td class="w-65 thin">This method will update the nodelist of models and also bind the callbacks that you defined automatically. It is very useful when you append new models or use AJAX.</td>
                   </tr>
                 </tbody>
               </table>
+            </div>
+            <!-- callbacks -->
+            <div class="content-wrap">
+              <h3 id="callbacks"><a class="hash" href="#callbacks" data-cursor-model>Callbacks</a></h3>
+              <p></p>
             </div>
           </article>
           
@@ -267,8 +279,6 @@ cotton.stop()
   </div>
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
-  <!-- <script src="./js/prism.js"></script> -->
-  <!-- <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/highlight.min.js"></script> -->
   <script src="./js/highlight.pack.js"></script>
   <script src="./js/cotton.min.js"></script>
   <script src="./js/main.js"></script>
