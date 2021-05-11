@@ -2,7 +2,7 @@ import { warn } from './utils/warn'
 import { isMobile } from './utils/isMobile'
 import { getRect } from './utils/getRect'
 import { cottonAnimation, airModeAnimation } from './core/animationFrame'
-import { bindCallback } from './core/bindCallback'
+import { bindModelCallbacks } from './core/bindCallbacks'
 
 export default class Cotton {
 
@@ -28,8 +28,10 @@ export default class Cotton {
       speed: 0.125,
       airMode: false,
       on: {
-        modelEnter: null,
-        modelLeave: null
+        enterModel: null,
+        leaveModel: null,
+        enterScene: null,
+        leaveScene: null
       }
     }
     
@@ -39,6 +41,8 @@ export default class Cotton {
     this.models = document.querySelectorAll(this.params.models);
     
     if (!this.element) return warn('Cannot define a cotton element which is not exist');
+    if (!this.scene) return warn('Cannot define a scene which is not exist');
+    
     if (this.params.speed > 1 || this.params.speed <= 0) this.params.speed = 0.125;
     if (this.params.airMode) {
       const airMode = this.params.airMode;
@@ -52,19 +56,17 @@ export default class Cotton {
   }
 
   // private functions
-  // callbacks when cotton element enter (leave) models
-  static bindModelCallback(scope) {
-    if (scope.models.length !== 0) bindCallback(scope);
-  }
 
   // set mouse data
   static setData(scope, type) {
     const el = scope.element;
     const scene = scope.scene;
-    const mouseData = scope.params.data;
-    const airMode = scope.params.airMode;
+    const params = scope.params;
+    const mouseData = params.data;
+    const airMode = params.airMode;
     const listener = type ? 'addEventListener' : 'removeEventListener';
     const classHandler = type ? 'add' : 'remove';
+    const callbackHandler = type ? 'enterScene' : 'leaveScene';
 
     function getMouseMove(e) {
       mouseData.mouseX = airMode ? e.pageX : e.clientX;
@@ -90,21 +92,20 @@ export default class Cotton {
       scene[listener]('mousemove', getMouseDistance);
     }
 
-    if ([...el.classList].indexOf(scope.params.conttonInitClass) > -1) el.classList[classHandler](scope.params.cottonMovingClass);
+    if ([...el.classList].indexOf(params.conttonInitClass) > -1) el.classList[classHandler](params.cottonMovingClass);
+    if (params.on[callbackHandler] && typeof params.on[callbackHandler] === 'function') params.on[callbackHandler].call(scope, el, scene);
   }
 
   // init
   static init(scope) {
     const scene = scope.scene;
     
-    if (!scene) return warn('Cannot define a scene which is not exist');
-    
     scene.addEventListener('mouseenter', function() { Cotton.setData(scope, true) });
     scene.addEventListener('mouseleave', function() { Cotton.setData(scope, false) });
 
     scope.move();
 
-    Cotton.bindModelCallback(scope);
+    bindModelCallbacks(scope);
   }
 
 
@@ -133,6 +134,6 @@ export default class Cotton {
   // update models binding
   updateModels() {
     this.models = document.querySelectorAll(this.params.models);
-    Cotton.bindModelCallback(this);
+    bindModelCallbacks(this);
   }
 }

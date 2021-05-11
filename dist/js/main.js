@@ -3,11 +3,11 @@ $(function() {
     speed: 1,
     models: '[data-cursor-model]',
     on: {
-      modelEnter: function(cursor, model) {
+      enterModel: function(cursor, model) {
         const color = $(model).attr('data-cursor-color');
         if (color) $(cursor).addClass(color);
       },
-      modelLeave: function(cursor, model) {
+      leaveModel: function(cursor, model) {
         const color = $(model).attr('data-cursor-color');
         if (color) $(cursor).removeClass(color);
       },
