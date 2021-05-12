@@ -34,6 +34,11 @@ $(function() {
 
   // sidebarActive
   sidebarActive();
+
+  //
+  const ball = new Cotton('#ball', {
+    scene: '.simple-demo .demo'
+  })
 });
 
 
@@ -67,6 +72,25 @@ function gradientText() {
 
 // sidebarActive
 function sidebarActive() {
-  const ids = $('[data-sidebar]');
-  console.log(ids)
+  const ids = $('[data-ids]');
+  let sm = $(window).scrollTop() + $(window).innerHeight() / 2;
+
+  function detectPos(sm) {
+    ids.each(function(i, el) {
+      const thisTop = $(el).parent().offset().top,
+            thisBot = $(el).parent().offset().top + $(el).parent().innerHeight();
+      if (sm > thisTop && sm < thisBot) {
+        const idName = el.id;
+        $(`.sidebar a[href="#${idName}"]`).addClass('active');
+        $('.sidebar a').not(`.sidebar a[href="#${idName}"]`).removeClass('active');
+      }
+    });
+  }
+  
+  detectPos(sm);
+
+  $(window).on('scroll', function() {
+    sm = $(window).scrollTop() + $(window).innerHeight() / 2;
+    detectPos(sm)
+  });
 }

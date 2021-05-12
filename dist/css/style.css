@@ -29,6 +29,7 @@ body {
 .pill-btn {
   display: inline-block;
   text-align: center;
+  min-width: 150px;
   border-radius: 25px;
   border: 1px solid var(--primary-color);
   padding: 12px 20px;
@@ -200,6 +201,8 @@ table .tips {
 #arrow-cursor {
   position: fixed;
   z-index: 9;
+  top: 0;
+  left: 0;
   width: 70px;
   height: 70px;
   transform: translate(-70px, -70px);
@@ -303,7 +306,7 @@ table .tips {
   padding: 7px 0 7px 10px;
   transition: .3s
 }
-.sidebar-item > li a:hover {
+.sidebar-item > li a:hover, .sidebar-item > li a.active {
   padding: 7px 0 7px 20px;
 }
 .sidebar-item > li a::before {
@@ -317,7 +320,7 @@ table .tips {
   background-color: rgba(255, 255, 255, .7);
   transition: .3s;
 }
-.sidebar-item > li a:hover::before {
+.sidebar-item > li a:hover::before, .sidebar-item > li a.active::before {
   width: 10px;
 }
 @media screen and (max-width: 1024px) {
@@ -330,6 +333,7 @@ table .tips {
 main {
   display: block;
   width: calc(100% - 240px);
+  padding-bottom: 80px;
 }
 @media screen and (max-width: 1024px) {
   main {
@@ -424,6 +428,71 @@ section.content-block .content-wrap .pill-btn:hover {
   background-color: var(--primary-color);
 }
 footer {
-  height: 350px;
+  height: 250px;
   background-color: #444;
+}
+
+.demo-box {
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+ul.tabs {
+  display: flex;
+  background-color: var(--primary-color);
+}
+ul.tabs a {
+  display: block;
+  width: 25%;
+  text-align: center;
+  color: #fff;
+  border-bottom: 1px solid #999;
+  padding: 20px;
+  transition: .3s;
+}
+ul.tabs a:hover {
+  background-color: var(--secondary-color);
+}
+ul.tabs a.active {
+  color: var(--tertiary-color);
+  background-color: #fff;
+  border: 1px solid #999;
+  border-bottom: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.views {
+  position: relative;
+  border: 1px solid #999;
+  border-top: none;
+  width: 100%;
+  height: 500px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.views > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s;
+}
+.views > div.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+#ball {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  background-color: #000;
+  transform: translate(-20px, -20px);
 }
