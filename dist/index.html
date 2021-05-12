@@ -26,7 +26,7 @@
       </mask>
     </defs>
     <g mask="url(#cursor-pie-mask)" id="arrow-cursor-mask" transform="matrix(1,0,0,1,0,0)">
-      <ellipse ry="30" rx="30" id="svg_1" cy="50" cx="50" fill="#f9cbbd"></ellipse>
+      <ellipse ry="30" rx="30" cy="50" cx="50" fill="#f9cbbd"></ellipse>
     </g>
   </svg>
 
@@ -39,25 +39,28 @@
     
     <!-- sidebar -->
     <div class="sidebar">
-      <!-- sidebar-group -->
-      <ul class="sidebar-group">
-        <li>
-          <p><a href="#started" data-cursor-model data-cursor-color="white">Getting Started</a></p>
-          <ul class="sidebar-item">
-            <li><a href="#download" data-cursor-model data-cursor-color="white">Download</a></li>
-            <li><a href="#installation" data-cursor-model data-cursor-color="white">Installation</a></li>
-            <li><a href="#usage" data-cursor-model data-cursor-color="white">Basic Usage</a></li>
-          </ul>
-        </li>
-        <li>
-          <p><a href="#documentation" data-cursor-model data-cursor-color="white">Documentation</a></p>
-          <ul class="sidebar-item">
-            <li><a href="#parameters" data-cursor-model data-cursor-color="white">Parameters</a></li>
-            <li><a href="#methods" data-cursor-model data-cursor-color="white">Methods</a></li>
-            <li><a href="#callbacks" data-cursor-model data-cursor-color="white">Callbacks</a></li>
-          </ul>
-        </li>
-      </ul>
+      <div class="sidebar-inner">
+        <!-- sidebar-group -->
+        <ul class="sidebar-group">
+          <li>
+            <p><a href="#started" data-cursor-model data-cursor-color="white">Getting Started</a></p>
+            <ul class="sidebar-item">
+              <li><a href="#download" data-cursor-model data-cursor-color="white">Download</a></li>
+              <li><a href="#installation" data-cursor-model data-cursor-color="white">Installation</a></li>
+              <li><a href="#usage" data-cursor-model data-cursor-color="white">Basic Usage</a></li>
+            </ul>
+          </li>
+          <li>
+            <p><a href="#documentation" data-cursor-model data-cursor-color="white">Documentation</a></p>
+            <ul class="sidebar-item">
+              <li><a href="#parameters" data-cursor-model data-cursor-color="white">Parameters</a></li>
+              <li><a href="#methods" data-cursor-model data-cursor-color="white">Methods</a></li>
+              <li><a href="#callbacks" data-cursor-model data-cursor-color="white">Callbacks</a></li>
+              <li><a href="#mobile" data-cursor-model data-cursor-color="white">Mobile Device</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <!-- main -->
@@ -84,21 +87,21 @@
 
           <!-- #started -->
           <article>
-            <h2 id="started"><a class="hash" href="#started" data-cursor-model>Getting Started</a></h2>
+            <h2 id="started" data-sidebar><a class="hash" href="#started" data-cursor-model>Getting Started</a></h2>
             <hr>
             <!-- download -->
             <div class="content-wrap">
-              <h3 id="download"><a class="hash" href="#download" data-cursor-model>Download</a></h3>
+              <h3 id="download" data-sidebar><a class="hash" href="#download" data-cursor-model>Download</a></h3>
               <h4>Via npm</h4>
               <pre><code>npm install cotton</code></pre>
               <h4>Via CDN</h4>
               <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/fluffy-factory/magnet-mouse@latest/lib/magnet-mouse.min.js">&lt;/script></code></pre>
               <h4>Manual download</h4>
-              <div class="btn-wrap"><a class="pill-btn hollow" data-cursor-model href="https://github.com/cotton123236/cotton.js/archive/refs/heads/main.zip">Download ZIP</a></div>
+              <div class="btn-wrap"><a class="pill-btn hollow" data-cursor-model data-cursor-color="white" href="https://github.com/cotton123236/cotton.js/archive/refs/heads/main.zip">Download ZIP</a></div>
             </div>
             <!-- installation -->
             <div class="content-wrap">
-              <h3 id="installation"><a class="hash" href="#installation" data-cursor-model>Installation</a></h3>
+              <h3 id="installation" data-sidebar><a class="hash" href="#installation" data-cursor-model>Installation</a></h3>
               <h4>ES modules</h4>
               <p>After Download the files from npm, all you need is typing the following code :</p>
               <pre><code class="language-javascript">import Cotton from 'cotton'</code></pre>
@@ -108,15 +111,14 @@
             </div>
             <!-- usage -->
             <div class="content-wrap">
-              <h3 id="usage"><a class="hash" href="#usage" data-cursor-model>Basic Usage</a></h3>
+              <h3 id="usage" data-sidebar><a class="hash" href="#usage" data-cursor-model>Basic Usage</a></h3>
               <h4>HTML</h4>
               <p>Create an element that you would like to animate.</p>
               <pre><code class="language-html">&lt;div id="#cotton-cursor">&lt;/div></code></pre>
               <h4>CSS</h4>
               <p>Style your element.</p>
               <p class="tips">If you want to make a mouse-following element, you have to set the <span class="hilite">position</span> property to <span class="hilite">fixed</span>.<br>And set <span class="hilite">pointer-events</span> to <span class="hilite">none</span> to make sure the real mouse can touch the DOM element.</p>
-              <pre><code class="language-css narrow">
-#cotton-cursor {
+              <pre><code class="language-css">#cotton-cursor {
     position: fixed;
     z-index: 9;
     width: 20px;
@@ -125,8 +127,7 @@
     pointer-events: none;
     background-color: #f9cabc;
     transform: translate(-20px, -20px);    /* move out from window before cotton init */
-}
-              </code></pre>
+}</code></pre>
               <h4>JavaScript</h4>
               <p>Initialize Cotton in JavaScript.</p>
               <pre><code class="language-javascript">const cottonCursor = new Cotton('#cotton-cursor')</code></pre>
@@ -135,11 +136,11 @@
 
           <!-- #documentation -->
           <article>
-            <h2 id="documentation"><a class="hash" href="#documentation" data-cursor-model>Documentation</a></h2>
+            <h2 id="documentation" data-sidebar><a class="hash" href="#documentation" data-cursor-model>Documentation</a></h2>
             <hr>
             <!-- parameters -->
             <div class="content-wrap">
-              <h3 id="parameters"><a class="hash" href="#parameters" data-cursor-model>Parameters</a></h3>
+              <h3 id="parameters" data-sidebar><a class="hash" href="#parameters" data-cursor-model>Parameters</a></h3>
               <p class="tips">
                 <span class="bold">Cotton : </span>which means the element that you initialize.<br>
                 <span class="bold">Models : </span>which means the elements that would interact with your cotton.
@@ -204,12 +205,10 @@
                     <td class="w-15 gray-color bold mono">boolean | object</td>
                     <td class="w-20 ter-color bold mono">false</td>
                     <td class="w-45 thin">By default, the cotton element will relative to the top left of the window when doing the transform.<br>If set to <span class="hilite">true</span>, then cotton will do the transform relative to its own center point. And the following properties will be set automatically.<br>
-                      <pre><code class="language-javascript narrow">
-airMode: {
+                      <pre><code class="language-javascript">airMode: {
     resistance: 15,
     reverse: false
-}
-                      </code></pre>
+}</code></pre>
                     or you can just set an object with specified properties directly.
                     <p class="tips">In airMode, the transform value will not increase if cotton is not in viewport.</p>
                     </td>
@@ -233,14 +232,12 @@ airMode: {
             </div>
             <!-- methods -->
             <div class="content-wrap">
-              <h3 id="methods"><a class="hash" href="#methods" data-cursor-model>Methods</a></h3>
+              <h3 id="methods" data-sidebar><a class="hash" href="#methods" data-cursor-model>Methods</a></h3>
               <p>After you initialize the cotton element, you can use the methods of its initialized instance in the variable. As the following example :</p>
-              <pre><code class="language-javascript narrow">
-const cotton = new Cotton('#cotton-cursor')
+              <pre><code class="language-javascript">const cotton = new Cotton('#cotton-cursor')
 
 // call the stop method of cotton
-cotton.stop()
-              </code></pre>
+cotton.stop()</code></pre>
               <p>All available methods :</p>
               <table>
                 <thead>
@@ -266,8 +263,66 @@ cotton.stop()
             </div>
             <!-- callbacks -->
             <div class="content-wrap">
-              <h3 id="callbacks"><a class="hash" href="#callbacks" data-cursor-model>Callbacks</a></h3>
-              <p></p>
+              <h3 id="callbacks" data-sidebar><a class="hash" href="#callbacks" data-cursor-model>Callbacks</a></h3>
+              <p>Cotton provide several callbacks to let you make more different and interesting setup.<br>You need to use <span class="hilite">on</span> parameter to difine the callbacks on cotton initialization. As the following example :</p>
+              
+              <pre><code>const cotton = new Cotton('#cotton-cursor', {
+  // ...
+  on: {
+    enterModel: function() {
+      console.log('enter model')
+    }
+  }
+})</code></pre>
+              <p>All available callbacks :</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Callback</th>
+                    <th>Arguments</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="w-20 ter-color bold mono">enterModel</td>
+                    <td class="w-15 ter-color bold mono">(cotton, model)</td>
+                    <td class="w-65 thin">Callback will execute when mouse enter the model.<br>First argument is the cotton element. Second argument is the model that your mouse is touching.</td>
+                  </tr>
+                  <tr>
+                    <td class="w-20 ter-color bold mono">leaveModel</td>
+                    <td class="w-15 ter-color bold mono">(cotton, model)</td>
+                    <td class="w-65 thin">Callback will execute when mouse leave the model.<br>First argument is the cotton element. Second argument is the model that your mouse is touching.</td>
+                  </tr>
+                  <tr>
+                    <td class="w-20 ter-color bold mono">enterScene</td>
+                    <td class="w-15 ter-color bold mono">(cotton, model)</td>
+                    <td class="w-65 thin">Callback will execute when mouse enter the scene.<br>First argument is the cotton element. Second argument is the scene that you defined on cotton initialization.</td>
+                  </tr>
+                  <tr>
+                    <td class="w-20 ter-color bold mono">enterModel</td>
+                    <td class="w-15 ter-color bold mono">(cotton, model)</td>
+                    <td class="w-65 thin">Callback will execute when mouse leave the scene.<br>First argument is the cotton element. Second argument is the scene that you defined on cotton initialization.</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>The keyword <span class="hilite">this</span> in these callback function is the initialized instance. So you also can use all the methods in these callbacks with <span class="hilite">this</span> keyword.</p>
+              <pre><code>const cotton = new Cotton('#cotton-cursor',{
+  // ...
+  on: {
+    enterModel: function() {
+      this.stop();
+    },
+    enterModel: function() {
+      this.move();
+    }
+  }
+})</code></pre>
+              <p class="tips">But do not use <span class="hilite">stop()</span> on erterScene or <span class="hilite">move()</span> on leaveScene, because it will cause conflict.</p>
+            </div>
+            <div class="content-wrap">
+              <h3 id="mobile"><a class="hash" href="#mobile" data-cursor-model>Mobile Device</a></h3>
+              <p>Because there is no mouse on mobile devices, Cotton.JS will automatically detect user device and won't initialize if using mobile.</p>
             </div>
           </article>
           
@@ -277,6 +332,9 @@ cotton.stop()
     </main>
 
   </div>
+
+  <!-- footer -->
+  <footer></footer>
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
   <script src="./js/highlight.pack.js"></script>

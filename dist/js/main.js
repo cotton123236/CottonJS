@@ -1,5 +1,6 @@
 $(function() {
-  window.cursor = new Cotton('#arrow-cursor', {
+  // cotton
+  new Cotton('#arrow-cursor', {
     speed: 1,
     models: '[data-cursor-model]',
     on: {
@@ -14,23 +15,31 @@ $(function() {
     }
   });
   
-  const h1 = new Cotton('h1', {
+  new Cotton('h1', {
     airMode: {
       resistance: 30
     }
   });
-  const h1Shadow = new Cotton('.h1-shadow', {
+  new Cotton('.h1-shadow', {
     airMode: {
       resistance: 20
     }
   });
+
+  // highlightAll
   hljs.highlightAll();
-;
+
+  // gradientText
   gradientText();
+
+  // sidebarActive
+  sidebarActive();
 });
 
 
 
+
+// detect broswer
 function isBrowser() {
   const userAgent = navigator.userAgent;
 
@@ -49,8 +58,15 @@ function isBrowser() {
   }
 }
 
+// gradientText
 function gradientText() {
   if (isBrowser() === 'IE' || isBrowser() === 'safari' || isBrowser() === 'opera') return;
   $('h1').addClass('textGradient');
   $('.h1-shadow').addClass('textGradient');
+}
+
+// sidebarActive
+function sidebarActive() {
+  const ids = $('[data-sidebar]');
+  console.log(ids)
 }

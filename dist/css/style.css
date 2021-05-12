@@ -32,6 +32,7 @@ body {
   border-radius: 25px;
   border: 1px solid var(--primary-color);
   padding: 12px 20px;
+  transition: .3s;
 }
 .pill-btn.solid {
   color: #fff;
@@ -79,9 +80,6 @@ pre {
   margin-bottom: 20px;
   border-radius: 5px;
   overflow: hidden;
-}
-pre code.narrow {
-  padding: 0 20px;
 }
 .mono {
   font-family: 'Roboto Mono';
@@ -132,6 +130,7 @@ pre code.narrow {
 table {
   font-size: 14px;
   line-height: 1.6;
+  margin-bottom: 20px;
 }
 tr {
   border-bottom: 1px solid #e5e7eb;
@@ -265,9 +264,17 @@ table .tips {
   fill: #fff !important;
 }
 
+/* main-wrapper */
+.main-wrapper {
+  display: flex;
+}
+
 /* sidebar */
 .sidebar {
-  position: fixed;
+  position: relative;
+}
+.sidebar-inner {
+  position: sticky;
   top: 0;
   left: 0;
   width: 240px;
@@ -292,11 +299,26 @@ table .tips {
   font-weight: 300;
 }
 .sidebar-item > li a {
+  position: relative;
   padding: 7px 0 7px 10px;
   transition: .3s
 }
 .sidebar-item > li a:hover {
   padding: 7px 0 7px 20px;
+}
+.sidebar-item > li a::before {
+  position: absolute;
+  content: "";
+  display: block;
+  top: calc(50% - 1px);
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: rgba(255, 255, 255, .7);
+  transition: .3s;
+}
+.sidebar-item > li a:hover::before {
+  width: 10px;
 }
 @media screen and (max-width: 1024px) {
   .sidebar {
@@ -307,11 +329,11 @@ table .tips {
 /* main */
 main {
   display: block;
-  margin-left: 240px;
+  width: calc(100% - 240px);
 }
 @media screen and (max-width: 1024px) {
   main {
-    margin-left: 0;
+    width: 100%;
   }
 }
 
@@ -396,4 +418,12 @@ section.content-block .content-wrap {
 }
 section.content-block .content-wrap .btn-wrap {
   padding-top: 10px;
+}
+section.content-block .content-wrap .pill-btn:hover {
+  color: #fff;
+  background-color: var(--primary-color);
+}
+footer {
+  height: 350px;
+  background-color: #444;
 }
