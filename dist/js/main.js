@@ -15,9 +15,10 @@ $(function() {
     }
   });
   
-  new Cotton('h1', {
+  window.h1 = new Cotton('h1', {
+    models: '.pre-test',
     airMode: {
-      resistance: 30
+      resistance: 30,
     }
   });
   new Cotton('.h1-shadow', {
@@ -97,7 +98,8 @@ function tabSwitch() {
 
   tabBtn.on('click', function() {
     const page = $(this).attr('data-tab-for');
-    $(this).addClass('active').siblings().removeClass('active');
+    $(this).addClass('active').removeAttr('data-cursor-color').siblings().removeClass('active').attr('data-cursor-color', 'white');
+    $('#arrow-cursor').removeClass('white');
     $(this).parent().siblings('.views').find(`.${page}`).addClass('show').siblings().removeClass('show');
   });
 }

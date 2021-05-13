@@ -66,8 +66,8 @@ export default class Cotton {
     const mouseData = params.data;
     const airMode = params.airMode;
     const listener = type ? 'addEventListener' : 'removeEventListener';
-    const classHandler = type ? 'add' : 'remove';
-    const callbackHandler = type ? 'enterScene' : 'leaveScene';
+    const classType = type ? 'add' : 'remove';
+    const callbackType = type ? 'enterScene' : 'leaveScene';
 
     function getMouseMove(e) {
       mouseData.mouseX = airMode ? e.pageX : e.clientX;
@@ -93,8 +93,8 @@ export default class Cotton {
       scene[listener]('mousemove', getMouseDistance);
     }
 
-    if ([...el.classList].indexOf(params.conttonInitClass) > -1) el.classList[classHandler](params.cottonMovingClass);
-    if (params.on[callbackHandler] && typeof params.on[callbackHandler] === 'function') params.on[callbackHandler].call(scope, el, scene);
+    if ([...el.classList].indexOf(params.conttonInitClass) > -1) el.classList[classType](params.cottonMovingClass);
+    if (params.on[callbackType] && typeof params.on[callbackType] === 'function') params.on[callbackType].call(scope, el, scene);
   }
 
   // init
@@ -106,7 +106,7 @@ export default class Cotton {
 
     scope.move();
 
-    bindModelCallbacks(scope);
+    bindModelCallbacks(scope, true);
   }
 
 
@@ -134,7 +134,7 @@ export default class Cotton {
 
   // update models binding
   updateModels() {
-    this.models = document.querySelectorAll(this.params.models);
-    bindModelCallbacks(this);
+    // this.models = document.querySelectorAll(this.params.models);
+    bindModelCallbacks(this, false);
   }
 }

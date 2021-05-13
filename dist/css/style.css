@@ -430,11 +430,8 @@ section.content-block .content-wrap .pill-btn:hover {
   color: #fff;
   background-color: var(--primary-color);
 }
-footer {
-  height: 250px;
-  background-color: #444;
-}
 
+/* demo-box */
 .demo-box {
   width: 100%;
   border-radius: 5px;
@@ -473,7 +470,7 @@ ul.tabs a.active {
   border: 1px solid #999;
   border-top: none;
   width: 100%;
-  height: 500px;
+  padding-bottom: 40%;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -502,4 +499,10 @@ ul.tabs a.active {
 .views iframe {
   width: 100%;
   height: calc(100% - 4px);
+}
+
+/* footer */
+footer {
+  height: 250px;
+  background-color: #444;
 }
