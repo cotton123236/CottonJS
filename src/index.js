@@ -25,6 +25,7 @@ export default class Cotton {
       cottonActiveClass: 'cotton-active',
       models: '.cotton-model',
       modelsActiveClass: 'model-active',
+      mouseCenter: true,
       speed: 0.125,
       airMode: false,
       on: {
