@@ -36,9 +36,7 @@ $(function() {
   sidebarActive();
 
   //
-  const ball = new Cotton('#ball', {
-    scene: '.simple-demo .demo'
-  })
+  tabSwitch();
 });
 
 
@@ -86,11 +84,20 @@ function sidebarActive() {
       }
     });
   }
-  
-  detectPos(sm);
 
+  detectPos(sm);
   $(window).on('scroll', function() {
     sm = $(window).scrollTop() + $(window).innerHeight() / 2;
     detectPos(sm)
+  });
+}
+
+function tabSwitch() {
+  const tabBtn = $('.tabs a');
+
+  tabBtn.on('click', function() {
+    const page = $(this).attr('data-tab-for');
+    $(this).addClass('active').siblings().removeClass('active');
+    $(this).parent().siblings('.views').find(`.${page}`).addClass('show').siblings().removeClass('show');
   });
 }

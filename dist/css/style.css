@@ -263,6 +263,9 @@ table .tips {
   transform: matrix(0.5,0,0,0.5,25,25) !important;
   opacity: .7 !important;
 }
+#arrow-cursor.cotton-active.none {
+  opacity: 0;
+}
 #arrow-cursor.cotton-active.white ellipse {
   fill: #fff !important;
 }
@@ -450,6 +453,12 @@ ul.tabs a {
   padding: 20px;
   transition: .3s;
 }
+ul.tabs a:first-child {
+  border-top-left-radius: 5px;
+}
+ul.tabs a:last-child {
+  border-top-right-radius: 5px;
+}
 ul.tabs a:hover {
   background-color: var(--secondary-color);
 }
@@ -458,8 +467,6 @@ ul.tabs a.active {
   background-color: #fff;
   border: 1px solid #999;
   border-bottom: none;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
 }
 .views {
   position: relative;
@@ -479,20 +486,20 @@ ul.tabs a.active {
   opacity: 0;
   pointer-events: none;
   transition: .3s;
+  overflow-y: auto;
 }
-.views > div.active {
+.views > div.show {
   opacity: 1;
   pointer-events: auto;
 }
-#ball {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 8;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  pointer-events: none;
-  background-color: #000;
-  transform: translate(-20px, -20px);
+.views > .demo {
+  padding: 2px 2px 0;
+}
+.views code {
+  background-color: #fff;
+  padding: 30px 60px;
+}
+.views iframe {
+  width: 100%;
+  height: calc(100% - 4px);
 }
