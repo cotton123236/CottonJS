@@ -99,10 +99,10 @@ export default class Cotton {
 
   // init
   static init(scope) {
-    const scene = scope.scene;
+    // const scene = scope.scene;
     
-    scene.addEventListener('mouseenter', function() { Cotton.setData(scope, true) });
-    scene.addEventListener('mouseleave', function() { Cotton.setData(scope, false) });
+    // scene.addEventListener('mouseenter', function() { Cotton.setData(scope, true) });
+    // scene.addEventListener('mouseleave', function() { Cotton.setData(scope, false) });
 
     scope.move();
 
@@ -116,6 +116,8 @@ export default class Cotton {
     const mouseData = this.params.data;
     const airMode = this.params.airMode;
 
+    Cotton.setData(this, true)
+
     this.element.classList.add(this.params.conttonInitClass);
 
     if (!mouseData.animationFrame) airMode ? airModeAnimation(this) : cottonAnimation(this);
@@ -124,6 +126,8 @@ export default class Cotton {
   // stop animation
   stop() {
     const mouseData = this.params.data;
+
+    Cotton.setData(this, false)
 
     this.element.classList.remove(this.params.conttonInitClass);
     this.element.classList.remove(this.params.cottonMovingClass);

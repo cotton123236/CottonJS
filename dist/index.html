@@ -427,7 +427,7 @@ section {
 h1, h2 {
   font-family: 'Poppins';
   font-weight: 600;
-  font-size: 6rem;
+  font-size: 7rem;
   color: #ff9c85;
   margin: 0;
 }
@@ -439,9 +439,12 @@ h2 {
 }</code></pre>
                   </div>
                   <div class="js">
-                    <pre><code>const h1 = new Cotton('h1', {
+                    <pre><code>// init h1 with airMode
+const h1 = new Cotton('h1', {
   airMode: true
 })
+
+// init h2 with airMode reverse
 const h2 = new Cotton('h2', {
   airMode: {
     reverse: true

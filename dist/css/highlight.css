@@ -28,8 +28,7 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 .hljs-keyword,
 .hljs-attribute,
 .hljs-meta-keyword,
-.hljs-doctag,
-.hljs-name {
+.hljs-doctag {
   font-weight: bold;
 }
 
@@ -43,7 +42,8 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 .hljs-selector-class,
 .hljs-quote,
 .hljs-template-tag,
-.hljs-deletion {
+.hljs-deletion,
+.hljs-name {
   color: #ff6847;
 }
 
