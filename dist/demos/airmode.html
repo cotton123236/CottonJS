@@ -14,6 +14,28 @@
       justify-content: center;
       align-items: center;
     }
+    * {
+      cursor: none;
+    }
+    #ball {
+      position: fixed;
+      z-index: 9;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #ff9c85;
+      transform: translate(-20px, -20px);
+      pointer-events: none;
+      transition: width .3s, height .3s, background-color .3s, opacity .3s;
+    }
+    #ball.cotton-active {
+      width: 60px;
+      height: 60px;
+      background-color: #333;
+      opacity: .6;
+    }
     section {
       position: relative;
     }
@@ -30,15 +52,24 @@
       left: 0;
       opacity: .5;
     }
+    @media screen and (max-width: 767px) {
+      h1, h2 {
+        font-size: 4rem;
+      }
+    }
   </style>
 </head>
 <body>
+  <div id="ball"></div>
   <section>
-    <h1>airMode</h1>
-    <h2>airMode</h2>
+    <h1 class="cotton-model">airMode</h1>
+    <h2 class="cotton-model">airMode</h2>
   </section>
   <script src="../js/cotton.min.js"></script>
   <script>
+    const ball = new Cotton('#ball', {
+      speed: 1
+    })
     const h1 = new Cotton('h1', {
       airMode: true
     })

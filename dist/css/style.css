@@ -197,12 +197,38 @@ table .tips {
   p, .pill-btn {
     font-size: 14px;
   }
+  thead tr {
+    display: none;
+  }
+  tr {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  td:last-child {
+    padding-top: 0;
+  }
+  .mono {
+    font-size: 12px;
+  }
+  .w-15 {
+    width: 20%;
+  }
+  .w-20 {
+    width: 40%;
+  }
+  .w-45, .w-65 {
+    width: 100%;
+  }
+  .f-50 {
+    width: 50%;
+  }
 }
 
 
 
 /* arrow-cursor */
 #arrow-cursor {
+  position: fixed;
   z-index: 9;
   top: 0;
   left: 0;
@@ -410,6 +436,19 @@ section.intro .btn-wrap .pill-btn {
     font-size: 120px;
   }
 }
+@media screen and (max-width: 767px) {
+  section.intro h1, section.intro .h1-shadow {
+    font-size: 70px;
+  }
+  section.intro .btn-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  section.intro .btn-wrap .pill-btn {
+    margin: 10px 0;
+  }
+}
 
 /* content-block */
 section.content-block {
@@ -432,6 +471,22 @@ section.content-block .content-wrap .btn-wrap {
 section.content-block .content-wrap .pill-btn:hover {
   color: #fff;
   background-color: var(--primary-color);
+}
+@media screen and (max-width: 1024px) {
+  section.content-block {
+    padding: 0 45px;
+  }
+}
+@media screen and (max-width: 767px) {
+  section.content-block {
+    padding: 0 15px;
+  }
+  section.content-block article {
+    padding: 60px 0 0;
+  }
+  section.content-block .content-wrap {
+    padding-top: 40px;
+  }
 }
 
 /* demo-box */
@@ -495,7 +550,11 @@ ul.tabs a.active {
 .views > .demo {
   padding: 2px 2px 0;
 }
+.views pre {
+  height: 100%;
+}
 .views code {
+  height: 100%;
   background-color: #fff;
   padding: 30px 60px;
 }
@@ -503,9 +562,24 @@ ul.tabs a.active {
   width: 100%;
   height: calc(100% - 4px);
 }
+@media screen and (max-width: 767px) {
+  ul.tabs a {
+    font-size: 14px;
+  }
+  .views {
+    width: 100%;
+    padding-bottom: 120%;
+  }
+  .views > div {
+    overflow-y: hidden;
+  }
+  .views code {
+    padding: 20px;
+  }
+}
 
 /* footer */
 footer {
   height: 250px;
-  background-color: #444;
+  background-color: #333;
 }

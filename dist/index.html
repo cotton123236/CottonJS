@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Documentation - Cotton.JS</title>
+  <link rel="icon" href="./img/favicon.ico">
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/highlight.css">
   <link rel="stylesheet" href="./css/style.css">
@@ -63,8 +64,9 @@
             <p><a href="#demos" data-cursor-model data-cursor-color="white">Demos</a></p>
             <ul class="sidebar-item">
               <li><a href="#simple" data-cursor-model data-cursor-color="white">Simple Usage</a></li>
-              <li><a href="#airmode" data-cursor-model data-cursor-color="white">AirMode</a></li>
               <li><a href="#magnet" data-cursor-model data-cursor-color="white">Magnet Cotton</a></li>
+              <li><a href="#message" data-cursor-model data-cursor-color="white">Hover Message</a></li>
+              <li><a href="#airmode" data-cursor-model data-cursor-color="white">AirMode</a></li>
             </ul>
           </li>
         </ul>
@@ -125,7 +127,7 @@
               <pre><code class="language-html">&lt;div id="cotton-cursor">&lt;/div></code></pre>
               <h4>CSS</h4>
               <p>Style your element.</p>
-              <p class="tips">By default (not the airMode), Cotton.JS will automatically set the <span class="hilite">position</span> property to <span class="hilite">fixed</span>.<br>But you need to set <span class="hilite">pointer-events</span> to <span class="hilite">none</span> to make sure the real mouse can touch the DOM element.</p>
+              <p class="tips"><span class="bold">1.</span> Highly suggest setting the <span class="hilite">position</span> property to <span class="hilite">fixed</span> if <span class="bold">not using the airMode</span>, and set <span class="hilite">pointer-events</span> to <span class="hilite">none</span> to make sure the real mouse can touch the DOM element.<br><span class="bold">2.</span> Please <span class="bold">do not</span> use <span class="hilite">transition</span> on the <span class="hilite">transform</span> property, it will cause some problems.</p>
               <pre><code class="language-css">#cotton-cursor {
   z-index: 9;
   width: 20px;
@@ -301,23 +303,23 @@ cotton.stop()</code></pre>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="w-20 ter-color bold mono">enterModel</td>
-                    <td class="w-15 ter-color bold mono">(cotton, model)</td>
+                    <td class="w-20 f-50 ter-color bold mono">enterModel</td>
+                    <td class="w-15 f-50 ter-color bold mono">(cotton, model)</td>
                     <td class="w-65 thin">Callback will execute when mouse enter the model.<br>First argument is the cotton element. Second argument is the model that your mouse is touching.</td>
                   </tr>
                   <tr>
-                    <td class="w-20 ter-color bold mono">leaveModel</td>
-                    <td class="w-15 ter-color bold mono">(cotton, model)</td>
+                    <td class="w-20 f-50 ter-color bold mono">leaveModel</td>
+                    <td class="w-15 f-50 ter-color bold mono">(cotton, model)</td>
                     <td class="w-65 thin">Callback will execute when mouse leave the model.<br>First argument is the cotton element. Second argument is the model that your mouse is touching.</td>
                   </tr>
                   <tr>
-                    <td class="w-20 ter-color bold mono">enterScene</td>
-                    <td class="w-15 ter-color bold mono">(cotton, scene)</td>
+                    <td class="w-20 f-50 ter-color bold mono">enterScene</td>
+                    <td class="w-15 f-50 ter-color bold mono">(cotton, scene)</td>
                     <td class="w-65 thin">Callback will execute when mouse enter the scene.<br>First argument is the cotton element. Second argument is the scene that you defined on cotton initialization.</td>
                   </tr>
                   <tr>
-                    <td class="w-20 ter-color bold mono">leaveScene</td>
-                    <td class="w-15 ter-color bold mono">(cotton, scene)</td>
+                    <td class="w-20 f-50 ter-color bold mono">leaveScene</td>
+                    <td class="w-15 f-50 ter-color bold mono">(cotton, scene)</td>
                     <td class="w-65 thin">Callback will execute when mouse leave the scene.<br>First argument is the cotton element. Second argument is the scene that you defined on cotton initialization.</td>
                   </tr>
                 </tbody>
@@ -354,7 +356,7 @@ cotton.stop()</code></pre>
                   <a href="javascript:;" data-tab-for="demo" data-cursor-model class="active">Demo</a>
                   <a href="javascript:;" data-tab-for="html" data-cursor-model data-cursor-color="white">HTML</a>
                   <a href="javascript:;" data-tab-for="css" data-cursor-model data-cursor-color="white">CSS</a>
-                  <a href="javascript:;" data-tab-for="js" data-cursor-model data-cursor-color="white">JavaScript</a>
+                  <a href="javascript:;" data-tab-for="js" data-cursor-model data-cursor-color="white">JS</a>
                 </ul>
                 <div class="views">
                   <div class="demo show" data-cursor-model data-cursor-color="none">
@@ -362,19 +364,17 @@ cotton.stop()</code></pre>
                   </div>
                   <div class="html">
                     <pre><code class="language-html">&lt;body>
+
   &lt;div id="ball">&lt;/div>
   &lt;div id="circle">&lt;/div>
+
   &lt;a class="pill-btn" href="#">MODEL&lt;/a>
+
 &lt;/body></code></pre>
                   </div>
                   <div class="css">
                     <pre><code>* {
   cursor: none
-}
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* cotton settings */
@@ -437,67 +437,6 @@ const circle = new Cotton('#circle', {
                 </div>
               </div>
             </div>
-            <!-- airmode -->
-            <div class="content-wrap">
-              <h3 id="airmode" data-ids><a class="hash" href="#airmode" data-cursor-model>AirMode</a></h3>
-              <div class="demo-box">
-                <ul class="tabs">
-                  <a href="javascript:;" data-tab-for="demo" data-cursor-model class="active">Demo</a>
-                  <a href="javascript:;" data-tab-for="html" data-cursor-model data-cursor-color="white">HTML</a>
-                  <a href="javascript:;" data-tab-for="css" data-cursor-model data-cursor-color="white">CSS</a>
-                  <a href="javascript:;" data-tab-for="js" data-cursor-model data-cursor-color="white">JavaScript</a>
-                </ul>
-                <div class="views">
-                  <div class="demo show" data-cursor-model data-cursor-color="none">
-                    <iframe src="./demos/airmode.html" frameborder="0"></iframe>
-                  </div>
-                  <div class="html">
-                    <pre><code class="language-html">&lt;body>
-  &lt;section>
-    &lt;h1>airMode&lt;/h1>
-    &lt;h2>airMode&lt;/h2>
-  &lt;/section>
-&lt;/body></code></pre>
-                  </div>
-                  <div class="css">
-                    <pre><code>body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-section {
-  position: relative;
-}
-h1, h2 {
-  font-family: 'Poppins';
-  font-weight: 600;
-  font-size: 7rem;
-  color: #ff9c85;
-  margin: 0;
-}
-h2 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: .5;
-}</code></pre>
-                  </div>
-                  <div class="js">
-                    <pre><code>// init h1 with airMode
-const h1 = new Cotton('h1', {
-  airMode: true
-})
-
-// init h2 with airMode reverse
-const h2 = new Cotton('h2', {
-  airMode: {
-    reverse: true
-  }
-})</code></pre>
-                  </div>
-                </div>
-              </div>
-            </div>
             <!-- magnet -->
             <div class="content-wrap">
               <h3 id="magnet" data-ids><a class="hash" href="#magnet" data-cursor-model>Magnet Cotton</a></h3>
@@ -506,7 +445,7 @@ const h2 = new Cotton('h2', {
                   <a href="javascript:;" data-tab-for="demo" data-cursor-model class="active">Demo</a>
                   <a href="javascript:;" data-tab-for="html" data-cursor-model data-cursor-color="white">HTML</a>
                   <a href="javascript:;" data-tab-for="css" data-cursor-model data-cursor-color="white">CSS</a>
-                  <a href="javascript:;" data-tab-for="js" data-cursor-model data-cursor-color="white">JavaScript</a>
+                  <a href="javascript:;" data-tab-for="js" data-cursor-model data-cursor-color="white">JS</a>
                 </ul>
                 <div class="views">
                   <div class="demo show" data-cursor-model data-cursor-color="none">
@@ -514,19 +453,17 @@ const h2 = new Cotton('h2', {
                   </div>
                   <div class="html">
                     <pre><code class="language-html">&lt;body>
+
   &lt;div id="ball">&lt;/div>
   &lt;div id="circle">&lt;/div>
+
   &lt;a class="pill-btn" href="#">MODEL&lt;/a>
+
 &lt;/body></code></pre>
                   </div>
                   <div class="css">
                     <pre><code>* {
   cursor: none
-}
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* cotton settings */
@@ -605,6 +542,213 @@ function magnet(cotton, model, space) {
   cotton.style.transform = 'none';
   cotton.style.transition = '.3s';
 }</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- message -->
+            <div class="content-wrap">
+              <h3 id="message" data-ids><a class="hash" href="#message" data-cursor-model>Hover Message</a></h3>
+              <div class="demo-box">
+                <ul class="tabs">
+                  <a href="javascript:;" data-tab-for="demo" data-cursor-model class="active">Demo</a>
+                  <a href="javascript:;" data-tab-for="html" data-cursor-model data-cursor-color="white">HTML</a>
+                  <a href="javascript:;" data-tab-for="css" data-cursor-model data-cursor-color="white">CSS</a>
+                  <a href="javascript:;" data-tab-for="js" data-cursor-model data-cursor-color="white">JS</a>
+                </ul>
+                <div class="views">
+                  <div class="demo show" data-cursor-model data-cursor-color="none">
+                    <iframe src="./demos/message.html" frameborder="0"></iframe>
+                  </div>
+                  <div class="html">
+                    <pre><code class="language-html">&lt;body>
+
+  &lt;div id="arrow">
+    &lt;div>&lt;/div>
+  &lt;/div>
+  &lt;div id="photo">
+    &lt;img src="">
+  &lt;/div>
+
+  &lt;h1>Hover To See The Logo&lt;/h1>
+
+  &lt;ul>
+    &lt;li data-photo="../img/angular.png">Angular&lt;/li>
+    &lt;li data-photo="../img/react.png">React&lt;/li>
+    &lt;li data-photo="../img/vue.png">Vue&lt;/li>
+    &lt;li data-photo="../img/svelte.png">Svelte&lt;/li>
+  &lt;/ul>
+
+&lt;/body></code></pre>
+                  </div>
+                  <div class="css">
+                    <pre><code>* {
+  cursor: none;
+}
+
+/* cotton settings */
+#arrow {
+  z-index: 9;
+  top: 0;
+  left: 0;
+  transform: translate(-30px, -30px);
+  pointer-events: none;
+}
+#arrow > div {
+  border-width: 15px 7px 15px 7px;
+  border-style: solid;
+  border-color: #ff6847 transparent transparent transparent;
+  transform: rotate(150deg);
+  transition: .3s;
+}
+#arrow.cotton-active > div {
+  border-width: 24px 10px 24px 10px;
+  opacity: .6;
+}
+#photo {
+  z-index: 8;
+  top: 10px;
+  left: 20px;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .3s;
+}
+#photo.show {
+  opacity: 1;
+}
+#photo img {
+  width: 100%;
+}
+
+/* models settings */
+ul {
+  display: flex;
+  color: #ff6847;
+  list-style-type: none;
+  margin-bottom: 50px;
+  padding-inline-start: 0px;
+}
+li {
+  font-size: 18px;
+  font-weight: 300;
+  padding: 10px;
+  margin: 0 20px;
+}</code></pre>
+                  </div>
+                  <div class="js">
+                    <pre><code>// arrow init
+const arrow = new Cotton('#arrow', {
+  models: 'li',
+  speed: 1,
+})
+
+// photo init
+const photo = new Cotton('#photo', {
+  models: 'li',
+  cottonActiveClass: 'show',
+  centerMouse: false,
+  on: {
+    enterModel(cotton, model) {
+      const photoURL = model.dataset.photo;
+      cotton.querySelector('img').setAttribute('src', photoURL)
+    }
+  }
+})</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- airmode -->
+            <div class="content-wrap">
+              <h3 id="airmode" data-ids><a class="hash" href="#airmode" data-cursor-model>AirMode</a></h3>
+              <div class="demo-box">
+                <ul class="tabs">
+                  <a href="javascript:;" data-tab-for="demo" data-cursor-model class="active">Demo</a>
+                  <a href="javascript:;" data-tab-for="html" data-cursor-model data-cursor-color="white">HTML</a>
+                  <a href="javascript:;" data-tab-for="css" data-cursor-model data-cursor-color="white">CSS</a>
+                  <a href="javascript:;" data-tab-for="js" data-cursor-model data-cursor-color="white">JS</a>
+                </ul>
+                <div class="views">
+                  <div class="demo show" data-cursor-model data-cursor-color="none">
+                    <iframe src="./demos/airmode.html" frameborder="0"></iframe>
+                  </div>
+                  <div class="html">
+                    <pre><code class="language-html">&lt;body>
+
+  &lt;div id="ball">&lt;/div>
+
+  &lt;section>
+
+    &lt;h1 class="cotton-model">airMode&lt;/h1>
+    &lt;h2 class="cotton-model">airMode&lt;/h2>
+
+  &lt;/section>
+
+&lt;/body></code></pre>
+                  </div>
+                  <div class="css">
+                    <pre><code>* {
+  cursor: noen;
+}
+
+/ * cotton */
+#ball {
+  z-index: 9;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ff9c85;
+  transform: translate(-20px, -20px);
+  pointer-events: none;
+  transition: width .3s, height .3s, background-color .3s, opacity .3s;
+}
+#ball.cotton-active {
+  width: 60px;
+  height: 60px;
+  background-color: #333;
+  opacity: .6;
+}
+
+/* models & cotton with airMode */
+section {
+  position: relative;
+}
+h1, h2 {
+  font-family: 'Poppins';
+  font-weight: 600;
+  font-size: 7rem;
+  color: #ff9c85;
+  margin: 0;
+}
+h2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .5;
+}</code></pre>
+                  </div>
+                  <div class="js">
+                    <pre><code>// init ball and set h1 & h2 as models (default class)
+const ball = new Cotton('#ball', {
+  speed: 1
+})
+
+// init h1 with airMode
+const h1 = new Cotton('h1', {
+  airMode: true
+})
+
+// init h2 with airMode reverse
+const h2 = new Cotton('h2', {
+  airMode: {
+    reverse: true
+  }
+})</code></pre>
                   </div>
                 </div>
               </div>

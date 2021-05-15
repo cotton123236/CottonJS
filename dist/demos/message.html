@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100vh;
+      font-family: 'Poppins';
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    * {
+      cursor: none;
+    }
+    #arrow {
+      position: fixed;
+      z-index: 9;
+      top: 0;
+      left: 0;
+      transform: translate(-30px, -30px);
+      pointer-events: none;
+    }
+    #arrow > div {
+      border-width: 15px 7px 15px 7px;
+      border-style: solid;
+      border-color: #ff6847 transparent transparent transparent;
+      transform: rotate(150deg);
+      transition: .3s;
+    }
+    #arrow.cotton-active > div {
+      border-width: 24px 10px 24px 10px;
+      opacity: .6;
+    }
+    #photo {
+      position: fixed;
+      z-index: 8;
+      top: 10px;
+      left: 20px;
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    #photo.show {
+      opacity: 1;
+    }
+    #photo img {
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      color: #ff9c85;
+    }
+    ul {
+      display: flex;
+      list-style-type: none;
+      color: #ff6847;
+      padding-inline-start: 0px;
+      margin-bottom: 50px;
+    }
+    li {
+      font-size: 18px;
+      font-weight: 300;
+      padding: 10px;
+      margin: 0 20px;
+    }
+    @media screen and (max-width: 767px) {
+      h1 {
+        font-size: 26px;
+        margin-bottom: 10px;
+      }
+      ul {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="arrow">
+    <div></div>
+  </div>
+  <div id="photo">
+    <img src="" alt="">
+  </div>
+  <h1>Hover To See The Logo</h1>
+  <ul>
+    <li data-photo="../img/angular.png">Angular</li>
+    <li data-photo="../img/react.png">React</li>
+    <li data-photo="../img/vue.png">Vue</li>
+    <li data-photo="../img/svelte.png">Svelte</li>
+  </ul>
+  <script src="../js/cotton.min.js"></script>
+  <script>
+    const arrow = new Cotton('#arrow', {
+      models: 'li',
+      speed: 1,
+    })
+    const photo = new Cotton('#photo', {
+      models: 'li',
+      cottonActiveClass: 'show',
+      centerMouse: false,
+      on: {
+        enterModel(cotton, model) {
+          const photoURL = model.dataset.photo;
+          cotton.querySelector('img').setAttribute('src', photoURL)
+        },
+      }
+    })
+  </script>
+</body>
+</html>

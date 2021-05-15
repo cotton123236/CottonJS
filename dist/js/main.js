@@ -15,7 +15,7 @@ $(function() {
     }
   });
   
-  window.h1 = new Cotton('h1', {
+  new Cotton('h1', {
     airMode: {
       resistance: 30
     },

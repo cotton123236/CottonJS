@@ -12,6 +12,11 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
   background: #F0F0F0;
   font-size: 14px;
 }
+@media screen and (max-width: 767px) {
+  .hljs {
+    overflow-y: auto;
+  }
+}
 
 
 /* Base color: saturation 0; */
