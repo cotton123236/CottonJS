@@ -22,7 +22,8 @@ export function cottonAnimation(scope) {
     cottonAnimation(scope);
   });
 
-  params.mouseCenter ? el.style.transform = `translate(calc(-50% + ${mouseData.x}px), calc(-50% + ${mouseData.y}px))` : el.style.transform = `translate(${mouseData.x}px, ${mouseData.y}px)`
+  el.style.position = 'fixed';
+  params.centerMouse ? el.style.transform = `translate(calc(-50% + ${mouseData.x}px), calc(-50% + ${mouseData.y}px))` : el.style.transform = `translate(${mouseData.x}px, ${mouseData.y}px)`
 }
 
 export function airModeAnimation(scope) {

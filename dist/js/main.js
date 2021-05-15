@@ -16,15 +16,14 @@ $(function() {
   });
   
   window.h1 = new Cotton('h1', {
-    models: '.pre-test',
     airMode: {
-      resistance: 30,
-    }
+      resistance: 30
+    },
   });
   new Cotton('.h1-shadow', {
     airMode: {
       resistance: 20
-    }
+    },
   });
 
   // highlightAll

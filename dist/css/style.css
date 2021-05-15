@@ -107,6 +107,10 @@ pre {
   color: #444;
   margin-bottom: 10px;
 }
+.content-block p a {
+  font-weight: 600;
+  color: var(--primary-color);
+}
 .tips {
   position: relative;
   padding: 15px 20px;
@@ -199,7 +203,6 @@ table .tips {
 
 /* arrow-cursor */
 #arrow-cursor {
-  position: fixed;
   z-index: 9;
   top: 0;
   left: 0;

@@ -64,6 +64,7 @@
             <ul class="sidebar-item">
               <li><a href="#simple" data-cursor-model data-cursor-color="white">Simple Usage</a></li>
               <li><a href="#airmode" data-cursor-model data-cursor-color="white">AirMode</a></li>
+              <li><a href="#magnet" data-cursor-model data-cursor-color="white">Magnet Cotton</a></li>
             </ul>
           </li>
         </ul>
@@ -100,9 +101,7 @@
             <div class="content-wrap">
               <h3 id="download" data-ids><a class="hash" href="#download" data-cursor-model>Download</a></h3>
               <h4>Via npm</h4>
-              <pre class="pre-test"><code>npm install cotton</code></pre>
-              <h4>Via CDN</h4>
-              <pre class="pre-test"><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/fluffy-factory/magnet-mouse@latest/lib/magnet-mouse.min.js">&lt;/script></code></pre>
+              <pre><code>npm install cotton</code></pre>
               <h4>Manual download</h4>
               <div class="btn-wrap"><a class="pill-btn hollow" data-cursor-model data-cursor-color="white" href="https://github.com/cotton123236/cotton.js/archive/refs/heads/main.zip">Download ZIP</a></div>
             </div>
@@ -110,11 +109,13 @@
             <div class="content-wrap">
               <h3 id="installation" data-ids><a class="hash" href="#installation" data-cursor-model>Installation</a></h3>
               <h4>ES modules</h4>
-              <p>After Download the files from npm, all you need is typing the following code :</p>
+              <p>After Download the files from npm, all you need is using the following code in your own project :</p>
               <pre><code class="language-javascript">import Cotton from 'cotton'</code></pre>
               <h4>Script tag include</h4>
-              <p>Simply download (or using CDN) and include with a script tag.</p>
+              <p>Simply download and include with a script tag.</p>
               <pre><code class="language-html">&lt;script src="cotton.js">&lt;/script></code></pre>
+              <p>or using CDN</p>
+              <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/fluffy-factory/magnet-mouse@latest/lib/magnet-mouse.min.js">&lt;/script></code></pre>
             </div>
             <!-- usage -->
             <div class="content-wrap">
@@ -124,9 +125,8 @@
               <pre><code class="language-html">&lt;div id="cotton-cursor">&lt;/div></code></pre>
               <h4>CSS</h4>
               <p>Style your element.</p>
-              <p class="tips">If you want to make a mouse-following element, you have to set the <span class="hilite">position</span> property to <span class="hilite">fixed</span>.<br>And set <span class="hilite">pointer-events</span> to <span class="hilite">none</span> to make sure the real mouse can touch the DOM element.</p>
+              <p class="tips">By default (not the airMode), Cotton.JS will automatically set the <span class="hilite">position</span> property to <span class="hilite">fixed</span>.<br>But you need to set <span class="hilite">pointer-events</span> to <span class="hilite">none</span> to make sure the real mouse can touch the DOM element.</p>
               <pre><code class="language-css">#cotton-cursor {
-  position: fixed;
   z-index: 9;
   width: 20px;
   height: 20px;
@@ -137,7 +137,9 @@
 }</code></pre>
               <h4>JavaScript</h4>
               <p>Initialize Cotton in JavaScript.</p>
+              <p class="tips">Highly recommened use <span class="hilite">id</span> to define your cotton element, because it needs to be the only one on initialization.</p>
               <pre><code class="language-javascript">const cottonCursor = new Cotton('#cotton-cursor')</code></pre>
+              <p>See some <a href="#demos">DEMOS</a> directly.</p>
             </div>
           </article>
 
@@ -167,7 +169,13 @@
                     <td class="w-20 ter-color bold mono">scene</td>
                     <td class="w-15 gray-color bold mono">string</td>
                     <td class="w-20 ter-color bold mono">'body'</td>
-                    <td class="w-45 thin">The animation will work when only the mouse is moving in the scene.</td>
+                    <td class="w-45 thin">The animation will work when only the mouse is moving in the scene.<p class="tips">The scene element has to be the only one.</p></td>
+                  </tr>
+                  <tr>
+                    <td class="w-20 ter-color bold mono">models</td>
+                    <td class="w-15 gray-color bold mono">string</td>
+                    <td class="w-20 ter-color bold mono">'.cotton-model'</td>
+                    <td class="w-45 thin">Define the elements that you want your cotton to interact with.</td>
                   </tr>
                   <tr>
                     <td class="w-20 ter-color bold mono">cottonInitClass</td>
@@ -188,12 +196,6 @@
                     <td class="w-45 thin">The cottonActiveClass will be added on cotton when mouse enter the models, and will be removed mouse leave the models.</td>
                   </tr>
                   <tr>
-                    <td class="w-20 ter-color bold mono">models</td>
-                    <td class="w-15 gray-color bold mono">string</td>
-                    <td class="w-20 ter-color bold mono">'.cotton-model'</td>
-                    <td class="w-45 thin">Define the elements that you want your cotton to interact with.</td>
-                  </tr>
-                  <tr>
                     <td class="w-20 ter-color bold mono">modelsActiveClass</td>
                     <td class="w-15 gray-color bold mono">string</td>
                     <td class="w-20 ter-color bold mono">'model-active'</td>
@@ -208,10 +210,17 @@
                     </td>
                   </tr>
                   <tr>
+                    <td class="w-20 ter-color bold mono">centerMouse</td>
+                    <td class="w-15 gray-color bold mono">boolean</td>
+                    <td class="w-20 ter-color bold mono">true</td>
+                    <td class="w-45 thin">By default, cotton's center point will follow the mouse center. If set to <span class="hilite">false</span>, cotton's left-top will follow the mouse center. </p>
+                    </td>
+                  </tr>
+                  <tr>
                     <td class="w-20 ter-color bold mono">airMode</td>
                     <td class="w-15 gray-color bold mono">boolean | object</td>
                     <td class="w-20 ter-color bold mono">false</td>
-                    <td class="w-45 thin">By default, the cotton element will relative to the top left of the window when doing the transform.<br>If set to <span class="hilite">true</span>, then cotton will do the transform relative to its own center point. And the following properties will be set automatically.<br>
+                    <td class="w-45 thin">By default, the cotton element will do transform relative to the top left of the window when doing the transform.<br>If set to <span class="hilite">true</span>, then cotton will do transform relative to its own center point. And the following properties will be set automatically.<br>
                       <pre><code class="language-javascript">airMode: {
     resistance: 15,
     reverse: false
@@ -224,7 +233,7 @@
                     <td class="w-20 ter-color bold mono">airMode.resistance</td>
                     <td class="w-15 gray-color bold mono">number</td>
                     <td class="w-20 ter-color bold mono">15</td>
-                    <td class="w-45 thin">The higher the number, the less the transform.
+                    <td class="w-45 thin"><span class="bold">This property have to register on airMode.</span><br>The higher the number, the less the transform.
                       <p class="tips">The resistance property must be <span class="bold">>= 1</span> and <span class="bold"><= 100</span>.<br>If this parameter is not specified, it will be set to default.<br>If set to 1, cotton will follow the mouse completely.</p>
                     </td>
                   </tr>
@@ -232,7 +241,7 @@
                     <td class="w-20 ter-color bold mono">airMode.reverse</td>
                     <td class="w-15 gray-color bold mono">boolean</td>
                     <td class="w-20 ter-color bold mono">false</td>
-                    <td class="w-45 thin">By default, the airMode cotton will move forward to the mouse.<br>If set to <span class="hilite">true</span>, the airMode cotton will move backward to the mouse.</td>
+                    <td class="w-45 thin"><span class="bold">This property have to register on airMode.</span><br>By default, the airMode cotton will move forward to the mouse.<br>If set to <span class="hilite">true</span>, the airMode cotton will move backward to the mouse.</td>
                   </tr>
                 </tbody>
               </table>
@@ -263,7 +272,7 @@ cotton.stop()</code></pre>
                     <td class="w-65 thin">Restart the animation.<br>And the <span class="hilite">cottonInitClass</span> will be added again when you call this method.</td>
                   <tr>
                     <td class="w-35 ter-color bold mono">cotton.updateModels()</td>
-                    <td class="w-65 thin">This method will update the nodelist of models and also bind the callbacks that you defined automatically. It is very useful when you append new models or use AJAX.</td>
+                    <td class="w-65 thin">This method will update the nodelist of models and also bind the callbacks that you defined automatically. It is very useful when you append new models or remove models.</td>
                   </tr>
                 </tbody>
               </table>
@@ -271,7 +280,7 @@ cotton.stop()</code></pre>
             <!-- callbacks -->
             <div class="content-wrap">
               <h3 id="callbacks" data-ids><a class="hash" href="#callbacks" data-cursor-model>Callbacks</a></h3>
-              <p>Cotton provide several callbacks to let you make more different and interesting setup.<br>You need to use <span class="hilite">on</span> parameter to difine the callbacks on cotton initialization. As the following example :</p>
+              <p>Cotton provide several callbacks to allow you make more different and interesting setup.<br>You need to use <span class="hilite">on</span> parameter to difine the callbacks on cotton initialization. As the following example :</p>
               
               <pre><code>const cotton = new Cotton('#cotton-cursor', {
   // ...
@@ -303,12 +312,12 @@ cotton.stop()</code></pre>
                   </tr>
                   <tr>
                     <td class="w-20 ter-color bold mono">enterScene</td>
-                    <td class="w-15 ter-color bold mono">(cotton, model)</td>
+                    <td class="w-15 ter-color bold mono">(cotton, scene)</td>
                     <td class="w-65 thin">Callback will execute when mouse enter the scene.<br>First argument is the cotton element. Second argument is the scene that you defined on cotton initialization.</td>
                   </tr>
                   <tr>
-                    <td class="w-20 ter-color bold mono">enterModel</td>
-                    <td class="w-15 ter-color bold mono">(cotton, model)</td>
+                    <td class="w-20 ter-color bold mono">leaveScene</td>
+                    <td class="w-15 ter-color bold mono">(cotton, scene)</td>
                     <td class="w-65 thin">Callback will execute when mouse leave the scene.<br>First argument is the cotton element. Second argument is the scene that you defined on cotton initialization.</td>
                   </tr>
                 </tbody>
@@ -355,14 +364,21 @@ cotton.stop()</code></pre>
                     <pre><code class="language-html">&lt;body>
   &lt;div id="ball">&lt;/div>
   &lt;div id="circle">&lt;/div>
+  &lt;a class="pill-btn" href="#">MODEL&lt;/a>
 &lt;/body></code></pre>
                   </div>
                   <div class="css">
                     <pre><code>* {
   cursor: none
 }
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* cotton settings */
 #ball, #circle {
-  position: fixed;
   top: 0;
   left: 0;
   z-index: 9;
@@ -373,12 +389,30 @@ cotton.stop()</code></pre>
 #ball {
   width: 10px;
   height: 10px;
-  background-color: #f9cabc;
+  background-color: #ff6847;
 }
 #circle {
   width: 40px;
   height: 40px;
   border: 1px solid #f9cabc;
+  transition: background-color .3s, border .3s, opacity .3s;
+}
+#circle.cotton-active {
+  background-color: #333;
+  border: 1px solid #333;
+  opacity: .6;
+}
+
+/* models settings */
+.pill-btn {
+  display: inline-block;
+  min-width: 80px;
+  text-align: center;
+  border-radius: 25px;
+  color: #fff;
+  background-color: #ff9c85;
+  padding: 14px 40px;
+  text-decoration: none;
 }</code></pre>
                   </div>
                   <div class="js">
@@ -388,12 +422,22 @@ const ball = new Cotton('#ball', {
 })
 
 // init circle
-const circle = new Cotton('#circle')</code></pre>
+const circle = new Cotton('#circle', {
+  models: '.pill-btn',
+  on: {
+    enterModel(cotton, model) {
+      model.textContent = 'ACTIVE'
+    },
+    leaveModel(cotton, model) {
+      model.textContent = 'MODEL'
+    }
+  }
+})</code></pre>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- simple -->
+            <!-- airmode -->
             <div class="content-wrap">
               <h3 id="airmode" data-ids><a class="hash" href="#airmode" data-cursor-model>AirMode</a></h3>
               <div class="demo-box">
@@ -454,6 +498,117 @@ const h2 = new Cotton('h2', {
                 </div>
               </div>
             </div>
+            <!-- magnet -->
+            <div class="content-wrap">
+              <h3 id="magnet" data-ids><a class="hash" href="#magnet" data-cursor-model>Magnet Cotton</a></h3>
+              <div class="demo-box">
+                <ul class="tabs">
+                  <a href="javascript:;" data-tab-for="demo" data-cursor-model class="active">Demo</a>
+                  <a href="javascript:;" data-tab-for="html" data-cursor-model data-cursor-color="white">HTML</a>
+                  <a href="javascript:;" data-tab-for="css" data-cursor-model data-cursor-color="white">CSS</a>
+                  <a href="javascript:;" data-tab-for="js" data-cursor-model data-cursor-color="white">JavaScript</a>
+                </ul>
+                <div class="views">
+                  <div class="demo show" data-cursor-model data-cursor-color="none">
+                    <iframe src="./demos/magnet.html" frameborder="0"></iframe>
+                  </div>
+                  <div class="html">
+                    <pre><code class="language-html">&lt;body>
+  &lt;div id="ball">&lt;/div>
+  &lt;div id="circle">&lt;/div>
+  &lt;a class="pill-btn" href="#">MODEL&lt;/a>
+&lt;/body></code></pre>
+                  </div>
+                  <div class="css">
+                    <pre><code>* {
+  cursor: none
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* cotton settings */
+#ball, #circle {
+  top: 0;
+  left: 0;
+  z-index: 9;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-40px, -40px);
+}
+#ball {
+  width: 10px;
+  height: 10px;
+  background-color: #ff6847;
+  transition: opacity .3s, width .3s, height .3s, background-color .3s;
+}
+#circle {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #f9cabc;
+}
+#ball.cotton-active {
+  width: 25px;
+  height: 25px;
+  opacity: .6;
+  background-color: #fff
+}
+
+/* models settings */
+.pill-btn {
+  display: inline-block;
+  min-width: 80px;
+  text-align: center;
+  border-radius: 25px;
+  color: #fff;
+  background-color: #ff9c85;
+  padding: 14px 40px;
+  text-decoration: none;
+}</code></pre>
+                  </div>
+                  <div class="js">
+                    <pre><code>// init ball
+const ball = new Cotton('#ball', {
+  speed: 1,
+  models: '.pill-btn',
+})
+
+// init circle
+const circle = new Cotton('#circle', {
+  models: '.pill-btn',
+  on: {
+    enterModel(cotton, model) {
+      this.stop();
+      magnet(cotton, model, 10);
+    },
+    leaveModel(cotton, model) {
+      this.move();
+      cotton.setAttribute('style', '');
+    }
+  }
+})
+
+// custom magnet function
+function magnet(cotton, model, space) {
+  const w = model.getBoundingClientRect().width,
+        h = model.getBoundingClientRect().height,
+        top = model.getBoundingClientRect().top,
+        left = model.getBoundingClientRect().left,
+        radius = parseInt(getComputedStyle(model).borderRadius);
+  cotton.style.top = top - space + 'px';
+  cotton.style.left = left - space + 'px';
+  cotton.style.width = w + space * 2 + 'px';
+  cotton.style.height = h + space * 2 + 'px';
+  cotton.style.borderRadius = radius + space + 'px';
+  cotton.style.transform = 'none';
+  cotton.style.transition = '.3s';
+}</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
           </article>
         </div>
       </section>
@@ -466,7 +621,6 @@ const h2 = new Cotton('h2', {
   <footer></footer>
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
-  <script src="https://cdn.jsdelivr.net/npm/jqueryrouter@2.2.11/dist/js/jquery.router.min.js"></script>
   <script src="./js/highlight.pack.js"></script>
   <script src="./js/cotton.min.js"></script>
   <script src="./js/main.js"></script>

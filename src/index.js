@@ -25,7 +25,7 @@ export default class Cotton {
       cottonActiveClass: 'cotton-active',
       models: '.cotton-model',
       modelsActiveClass: 'model-active',
-      mouseCenter: true,
+      centerMouse: true,
       speed: 0.125,
       airMode: false,
       on: {
@@ -40,6 +40,8 @@ export default class Cotton {
     this.params = Object.assign({}, defaults, options);
     this.scene = document.querySelector(this.params.scene);
     this.models = document.querySelectorAll(this.params.models);
+    this.enterModelHandler = this.enterModelHandler.bind(this);
+    this.leaveModelHandler = this.leaveModelHandler.bind(this);
     
     if (!this.element) return warn('Cannot define a cotton element which is not exist');
     if (!this.scene) return warn('Cannot define a scene which is not exist');
@@ -56,53 +58,54 @@ export default class Cotton {
     if (!isMobile()) Cotton.init(this);
   }
 
-  // private functions
 
-  // set mouse data
-  static setData(scope, type) {
+  // private functions
+  // get mouse data
+  static getMouseData(scope, type) {
     const el = scope.element;
     const scene = scope.scene;
-    const params = scope.params;
-    const mouseData = params.data;
-    const airMode = params.airMode;
-    const listener = type ? 'addEventListener' : 'removeEventListener';
-    const classType = type ? 'add' : 'remove';
-    const callbackType = type ? 'enterScene' : 'leaveScene';
+    const mouseData = scope.params.data;
+    const airMode = scope.params.airMode;
 
-    function getMouseMove(e) {
+    scene.addEventListener('mousemove', function(e) {
       mouseData.mouseX = airMode ? e.pageX : e.clientX;
       mouseData.mouseY = airMode ? e.pageY : e.clientY;
-    }
 
-    scene[listener]('mousemove', getMouseMove);
-    
+      if ([...el.classList].indexOf(scope.params.conttonInitClass) > -1) el.classList.add(scope.params.cottonMovingClass);
+    });
+
     if (airMode) {
-      if (type) mouseData.rect = getRect(el);
+      mouseData.rect = getRect(el);
 
-      const maxX = window.innerWidth + getRect(el).width / 2;
-      const maxY = window.innerHeight + getRect(el).height / 2;
-
-      function getMouseDistance(e) {
+      window.addEventListener('resize', function() { mouseData.rect = getRect(el); });
+      
+      scene.addEventListener('mousemove', function() {
+        const maxX = window.innerWidth + mouseData.rect.width / 2;
+        const maxY = window.innerHeight + mouseData.rect.height / 2;
         const distanceX = mouseData.mouseX - mouseData.rect.centerX;
         const distanceY = mouseData.mouseY - mouseData.rect.centerY;
 
         mouseData.distanceX = Math.min(Math.max(parseInt(distanceX), -maxX), maxX);
         mouseData.distanceY = Math.min(Math.max(parseInt(distanceY), -maxY), maxY);
-      }
-
-      scene[listener]('mousemove', getMouseDistance);
+      });
     }
-
-    if ([...el.classList].indexOf(params.conttonInitClass) > -1) el.classList[classType](params.cottonMovingClass);
-    if (params.on[callbackType] && typeof params.on[callbackType] === 'function') params.on[callbackType].call(scope, el, scene);
   }
-
+  
   // init
   static init(scope) {
-    // const scene = scope.scene;
-    
-    // scene.addEventListener('mouseenter', function() { Cotton.setData(scope, true) });
-    // scene.addEventListener('mouseleave', function() { Cotton.setData(scope, false) });
+    const el = scope.element;
+    const params = scope.params;
+    const scene = scope.scene;
+
+    scene.addEventListener('mouseenter', function() {
+      if (params.on.enterScene && typeof params.on.enterScene === 'function') params.on.enterScene.call(scope, el, scene);
+    });
+    scene.addEventListener('mouseleave', function() {
+      el.classList.remove(params.cottonMovingClass);
+      if (params.on.leaveScene && typeof params.on.leaveScene === 'function') params.on.leaveScene.call(scope, el, scene);
+    });
+
+    Cotton.getMouseData(scope, true)
 
     scope.move();
 
@@ -110,13 +113,33 @@ export default class Cotton {
   }
 
 
+  // self functions
+  // function for enterModel
+  enterModelHandler(e) {
+    const el = this.element;
+    const params = this.params;
+  
+    if (params.on.enterModel && typeof params.on.enterModel === 'function') params.on.enterModel.call(this, el, e.target);
+    el.classList.add(params.cottonActiveClass);
+    e.target.classList.add(params.modelsActiveClass);
+  }
+
+  // function for leaveModel
+  leaveModelHandler(e) {
+    const el = this.element;
+    const params = this.params;
+  
+    if (params.on.leaveModel && typeof params.on.leaveModel === 'function') params.on.leaveModel.call(this, el, e.target);
+    el.classList.remove(params.cottonActiveClass);
+    e.target.classList.remove(params.modelsActiveClass);
+  }
+
+
   // public methods
-  // anmate cotton element
+  // start animation
   move() {
     const mouseData = this.params.data;
     const airMode = this.params.airMode;
-
-    Cotton.setData(this, true)
 
     this.element.classList.add(this.params.conttonInitClass);
 
@@ -127,8 +150,6 @@ export default class Cotton {
   stop() {
     const mouseData = this.params.data;
 
-    Cotton.setData(this, false)
-
     this.element.classList.remove(this.params.conttonInitClass);
     this.element.classList.remove(this.params.cottonMovingClass);
 
@@ -138,7 +159,6 @@ export default class Cotton {
 
   // update models binding
   updateModels() {
-    // this.models = document.querySelectorAll(this.params.models);
     bindModelCallbacks(this, false);
   }
 }

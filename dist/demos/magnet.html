@@ -38,17 +38,18 @@
       width: 10px;
       height: 10px;
       background-color: #ff6847;
+      transition: opacity .3s, width .3s, height .3s, background-color .3s;
     }
     #circle {
       width: 40px;
       height: 40px;
       border: 1px solid #f9cabc;
-      transition: background-color .3s, border .3s, opacity .3s;
     }
-    #circle.cotton-active {
-      background-color: #333;
-      border: 1px solid #333;
+    #ball.cotton-active {
+      width: 25px;
+      height: 25px;
       opacity: .6;
+      background-color: #fff
     }
   </style>
 </head>
@@ -60,18 +61,37 @@
   <script>
     const ball = new Cotton('#ball', {
       speed: 1,
+      models: '.pill-btn',
     })
     const circle = new Cotton('#circle', {
       models: '.pill-btn',
       on: {
         enterModel(cotton, model) {
-          model.textContent = 'ACTIVE'
+          this.stop();
+          magnet(cotton, model, 10);
         },
         leaveModel(cotton, model) {
-          model.textContent = 'MODEL'
+          this.move();
+          cotton.setAttribute('style', '');
         }
       }
     })
+
+    // custom magnet function
+    function magnet(cotton, model, space) {
+      const w = model.getBoundingClientRect().width,
+            h = model.getBoundingClientRect().height,
+            top = model.getBoundingClientRect().top,
+            left = model.getBoundingClientRect().left,
+            radius = parseInt(getComputedStyle(model).borderRadius);
+      cotton.style.top = top - space + 'px';
+      cotton.style.left = left - space + 'px';
+      cotton.style.width = w + space * 2 + 'px';
+      cotton.style.height = h + space * 2 + 'px';
+      cotton.style.borderRadius = radius + space + 'px';
+      cotton.style.transform = 'none';
+      cotton.style.transition = '.3s';
+    }
   </script>
 </body>
 </html>
