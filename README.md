@@ -40,7 +40,7 @@ Simply download and include with a script tag :
 ```
 or using CDN :
 ```html
-<script src="https://cdn.jsdelivr.net/gh/"></script>
+<script src="https://cdn.jsdelivr.net/gh/cotton123236/cottonjs@latest/lib/cotton.min.js"></script>
 ```
 
 <br>

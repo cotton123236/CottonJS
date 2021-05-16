@@ -1,7 +1,7 @@
 {
   "name": "cotton.js",
   "version": "1.0.0",
-  "description": "a JavaScript library  which allows you to make a mouse-followed animation easily",
+  "description": "Cotton.JS is a JavaScript library that allows you to make a mouse interaction animation easily.",
   "main": "index.js",
   "scripts": {
     "build": "rollup -c"
