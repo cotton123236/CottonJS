@@ -1,13 +1,14 @@
 ![](https://i.imgur.com/THPfqAc.png)
 <br>
-<p align="center" color="#ff9c85">Cotton.JS is a JavaScript library that allows you to make a mouse interaction animation easily.</p>
+<br>
+<p align="center">Cotton.JS is a JavaScript library that allows you to make a mouse interaction animation easily.</p>
 <br>
 <p align="center">
-<a href="https://cotton123236.github.io/CottonJS/dist/index.html#demos" target="_blank">
-  <img src="https://i.imgur.com/BT8eOuZ.png" width="140" />
+<a href="https://cotton123236.github.io/CottonJS/dist/index.html#demos">
+  <img src="https://i.imgur.com/7mwrasy.png" width="140" />
 </a>
-<a href="https://cotton123236.github.io/CottonJS/dist/index.html#documentation" target="_blank">
-  <img src="https://i.imgur.com/dRNFDm5.png" width="140" />
+<a href="https://cotton123236.github.io/CottonJS/dist/index.html#documentation">
+  <img src="https://i.imgur.com/IJw175G.png" width="140" />
 </a>
 </p>
 
@@ -78,7 +79,7 @@ const cottonCursor = new Cotton('#cotton-cursor')
 ## Documentation
 
 ### Parameters
->Kwoning more [details](https://cotton123236.github.io/CottonJS/dist/index.html#parameters) about these parameters.
+>Knowing more [details](https://cotton123236.github.io/CottonJS/dist/index.html#parameters) about these parameters.
 
 All available parameters :
 ```js
@@ -101,7 +102,7 @@ const cottonCursor = new Cotton('#cotton-cursor', {
 <br>
 
 ### Methods
->Kwoning more [details](https://cotton123236.github.io/CottonJS/dist/index.html#methods) about these methods.
+>Knowing more [details](https://cotton123236.github.io/CottonJS/dist/index.html#methods) about these methods.
 
 All available methods :
 ```js
@@ -127,7 +128,7 @@ const cotton = new Cotton('#cotton-cursor', {
 <br>
 
 ### Callbacks
->Kwoning more [details](https://cotton123236.github.io/CottonJS/dist/index.html#callbacks) about these callbacks.
+>Knowing more [details](https://cotton123236.github.io/CottonJS/dist/index.html#callbacks) about these callbacks.
 
 All available callbacks :
 ```js
