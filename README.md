@@ -1,11 +1,8 @@
 <p align="center">
 <a href="https://cotton123236.github.io/CottonJS/dist/index.html">
-  <img src="https://i.imgur.com/moBEPCH.png" />
+  <img src="https://i.imgur.com/Fzqwbo7.png" />
 </a>
 </p>
-<br>
-<br>
-<br>
 <p align="center">Cotton.JS is a JavaScript library that allows you to make a mouse interaction animation easily.</p>
 <br>
 <p align="center">
