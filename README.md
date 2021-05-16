@@ -31,7 +31,7 @@ npm install cottonjs
 #### ES modules
 import Cotton.JS in your own project :
 ```js
-import Cotton from 'cotton'
+import Cotton from 'cottonjs'
 ```
 #### Script tag include
 Simply download and include with a script tag :

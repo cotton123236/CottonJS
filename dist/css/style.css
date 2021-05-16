@@ -401,12 +401,12 @@ section.intro {
 }
 section.intro .title {
   position: relative;
+  margin-bottom: 30px;
 }
 section.intro h1, section.intro .h1-shadow {
   color: var(--primary-color);
   font-size: 160px;
   font-weight: 600;
-  margin-bottom: 30px;
 }
 .textGradient {
   background-image: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--primary-color) 100%);
@@ -452,7 +452,11 @@ section.intro .btn-wrap .pill-btn {
 }
 @media screen and (max-width: 767px) {
   section.intro h1, section.intro .h1-shadow {
-    font-size: 70px;
+    font-size: 65px;
+  }
+  section.intro .h1-shadow {
+    top: 5px;
+    left: 30px;
   }
   section.intro .btn-wrap {
     display: flex;
