@@ -1,2 +1,3 @@
-# cotton.js
-a JavaScript library  which allows you to make a mouse-followed animation easily
+# Cotton.JS
+Cotton.JS is a JavaScript library that allows you to make a mouse interaction animation easily.
+

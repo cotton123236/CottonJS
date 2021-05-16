@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documentation - Cotton.JS</title>
+  <title>Cotton.JS</title>
   <link rel="icon" href="./img/favicon.ico">
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/highlight.css">
@@ -70,6 +70,7 @@
             </ul>
           </li>
         </ul>
+        <a class="github" data-cursor-model data-cursor-color="white" target="_blank" href="https://github.com/cotton123236/CottonJS"><img src="./img/github-white.png" alt="github-icon">GITHUB</a>
       </div>
     </div>
 
@@ -83,9 +84,9 @@
             <h1>Cotton.JS</h1>
             <div class="h1-shadow">Cotton.JS</div>
           </div>
-          <p>Cotton.JS is a JavaScript library that allows you to make a mouse interaction animation easily.<br><br><span>LIKE A FLOATING COTTON</span></p>
+          <p>Cotton.JS is a JavaScript library that allows you to make a mouse interaction animation easily.<br><br><span>LIKE A FLOATING COTTON!</span></p>
           <div class="btn-wrap">
-            <a class="pill-btn hollow" data-cursor-model data-cursor-color="white" href="https://github.com/cotton123236/cotton.js/archive/refs/heads/main.zip">Demos</a>
+            <a class="pill-btn hollow" data-cursor-model data-cursor-color="white" href="#demos">Demos</a>
             <a class="pill-btn solid" data-cursor-model data-cursor-color="white" href="#started">Getting Started</a>
           </div>
         </div>
@@ -111,11 +112,11 @@
             <div class="content-wrap">
               <h3 id="installation" data-ids><a class="hash" href="#installation" data-cursor-model>Installation</a></h3>
               <h4>ES modules</h4>
-              <p>After Download the files from npm, all you need is using the following code in your own project :</p>
+              <p>If you download the files via npm, you just need to import Cotton.JS in your own project :</p>
               <pre><code class="language-javascript">import Cotton from 'cotton'</code></pre>
               <h4>Script tag include</h4>
               <p>Simply download and include with a script tag.</p>
-              <pre><code class="language-html">&lt;script src="cotton.js">&lt;/script></code></pre>
+              <pre><code class="language-html">&lt;script src="cotton.min.js">&lt;/script></code></pre>
               <p>or using CDN</p>
               <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/fluffy-factory/magnet-mouse@latest/lib/magnet-mouse.min.js">&lt;/script></code></pre>
             </div>
@@ -129,6 +130,7 @@
               <p>Style your element.</p>
               <p class="tips"><span class="bold">1.</span> Highly suggest setting the <span class="hilite">position</span> property to <span class="hilite">fixed</span> if <span class="bold">not using the airMode</span>, and set <span class="hilite">pointer-events</span> to <span class="hilite">none</span> to make sure the real mouse can touch the DOM element.<br><span class="bold">2.</span> Please <span class="bold">do not</span> use <span class="hilite">transition</span> on the <span class="hilite">transform</span> property, it will cause some problems.</p>
               <pre><code class="language-css">#cotton-cursor {
+  position: fixed;
   z-index: 9;
   width: 20px;
   height: 20px;
@@ -340,7 +342,7 @@ cotton.stop()</code></pre>
             </div>
             <div class="content-wrap">
               <h3 id="mobile" data-ids><a class="hash" href="#mobile" data-cursor-model>Mobile Device</a></h3>
-              <p>Because there is no mouse on mobile devices, Cotton.JS will automatically detect user device and won't initialize if using mobile.</p>
+              <p>Because there is no mouse on mobile devices, Cotton.JS will automatically detect user device and won't initialize when using mobile.</p>
             </div>
           </article>
 
@@ -762,7 +764,12 @@ const h2 = new Cotton('h2', {
   </div>
 
   <!-- footer -->
-  <footer></footer>
+  <footer>
+    <p>
+      <a target="_blank" href="https://github.com/cotton123236/CottonJS" data-cursor-model data-cursor-color="white"><img src="./img//github-white.png" alt="github-icon"></a>
+      <br><br>Released under the MIT License.
+    </p>
+  </footer>
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
   <script src="./js/highlight.pack.js"></script>

@@ -11,7 +11,7 @@
   scroll-padding-top: 50px;
   /* scroll-behavior: smooth; */
   --primary-color: #ff9c85;
-  --secondary-color: #f9cabc;
+  --secondary-color: #ffd2c4;
   --tertiary-color: #ff6847;
 }
 
@@ -308,6 +308,20 @@ table .tips {
 .sidebar {
   position: relative;
 }
+.github {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 18px;
+  bottom: 20px;
+  left: 30px;
+}
+.github img {
+  display: inline-block;
+  width: 25px;
+  margin-right: 10px;
+}
 .sidebar-inner {
   position: sticky;
   top: 0;
@@ -580,6 +594,13 @@ ul.tabs a.active {
 
 /* footer */
 footer {
-  height: 250px;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
   background-color: #333;
+  padding: 120px 15px 40px;
+}
+footer a {
+  display: inline-block;
+  width: 20px;
 }
