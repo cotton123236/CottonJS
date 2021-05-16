@@ -19,7 +19,7 @@
 ### Download
 
 ```
-npm install cotton.js
+npm install cottonjs
 ```
 #### Manual download
 [Download ZIP](https://github.com/cotton123236/CottonJS/archive/refs/heads/main.zip)
