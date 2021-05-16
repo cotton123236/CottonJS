@@ -1,11 +1,16 @@
 ![](https://i.imgur.com/THPfqAc.png)
 <br>
-<center style="color: #ff9c85">Cotton.JS is a JavaScript library that allows you to make a mouse interaction animation easily.</center>
+<p align="center" color="#ff9c85">Cotton.JS is a JavaScript library that allows you to make a mouse interaction animation easily.</p>
 <br>
-<center>
-<a style="display: inline-block; border: 1px solid #ff9c85; text-align: center; color: #ff9c85; width: 140px; padding: 13px 20px; border-radius: 25px; margin-right: 10px" href="https://cotton123236.github.io/CottonJS/dist/index.html#demos">Demos</a>
-<a style="display: inline-block; background-color: #ff9c85; text-align: center; color: #fff; width: 140px; padding: 13px 20px; border-radius: 25px" href="https://cotton123236.github.io/CottonJS/dist/index.html#documentation">Document</a>
-</center>
+<p align="center">
+<a href="https://cotton123236.github.io/CottonJS/dist/index.html#demos" target="_blank">
+  <img src="https://i.imgur.com/BT8eOuZ.png" width="140" />
+</a>
+<a href="https://cotton123236.github.io/CottonJS/dist/index.html#documentation" target="_blank">
+  <img src="https://i.imgur.com/dRNFDm5.png" width="140" />
+</a>
+</p>
+
 <br>
 
 ## Getting Started
@@ -24,16 +29,16 @@ import Cotton from 'cotton'
 
 #### ES modules
 import Cotton.JS in your own project :
-```
+```js
 import Cotton from 'cotton'
 ```
 #### Script tag include
 Simply download and include with a script tag :
-```
+```html
 <script src="cotton.min.js"></script>
 ```
 or using CDN :
-```
+```html
 <script src="https://cdn.jsdelivr.net/gh/"></script>
 ```
 
@@ -43,13 +48,13 @@ or using CDN :
 
 #### HTML
 Create an element that you would like to animate.
-```
+```html
 <div id="cotton-cursor"></div>
 ```
 #### CSS
 Style your element.
->[color=#ff9c85]There is some [rules](https://cotton123236.github.io/CottonJS/dist/index.html#usage) that you need to notice.
-```
+>There is some [rules](https://cotton123236.github.io/CottonJS/dist/index.html#usage) that you need to notice.
+```css
 #cotton-cursor {
   position: fixed;
   z-index: 9;
@@ -63,23 +68,23 @@ Style your element.
 ```
 #### JavaScript
 Initialize Cotton in JavaScript.
-```
+```js
 const cottonCursor = new Cotton('#cotton-cursor')
 ```
->[color=#ff9c85]See some [demos](https://cotton123236.github.io/CottonJS/dist/index.html#demos).
+>See some [demos](https://cotton123236.github.io/CottonJS/dist/index.html#demos).
 
 <br>
 
 ## Documentation
 
 ### Parameters
->[color=#ff9c85]Kwoning more [details](https://cotton123236.github.io/CottonJS/dist/index.html#parameters) about these parameters.
+>Kwoning more [details](https://cotton123236.github.io/CottonJS/dist/index.html#parameters) about these parameters.
 
 All available parameters :
-```
+```js
 const cottonCursor = new Cotton('#cotton-cursor', {
-    scene: 'body',
-    models: '.cotton-model',
+    scene: 'body',  // element
+    models: '.cotton-model',  //elements
     cottonInitClass: 'cotton-init',
     cottonMovingClass: 'cotton-moving',
     cottonActiveClass: 'cotton-active',
@@ -96,10 +101,10 @@ const cottonCursor = new Cotton('#cotton-cursor', {
 <br>
 
 ### Methods
->[color=#ff9c85]Kwoning more [details](https://cotton123236.github.io/CottonJS/dist/index.html#methods) about these methods.
+>Kwoning more [details](https://cotton123236.github.io/CottonJS/dist/index.html#methods) about these methods.
 
 All available methods :
-```
+```js
 const cotton = new Cotton('#cotton-cursor')
 
 // call the method after initialization.
@@ -122,12 +127,13 @@ const cotton = new Cotton('#cotton-cursor', {
 <br>
 
 ### Callbacks
->[color=#ff9c85]Kwoning more [details](https://cotton123236.github.io/CottonJS/dist/index.html#callbacks) about these callbacks.
+>Kwoning more [details](https://cotton123236.github.io/CottonJS/dist/index.html#callbacks) about these callbacks.
 
 All available callbacks :
-```
+```js
 const cotton = new Cotton('#cotton-cursor', {
     on: {
+        // first argument is the element that you initialized, second argument is the element the mouse is interacting with.
         enterModel(cotton, model) {},
         leaveModel(cotton, model) {},
         enterScene(cotton, scene) {},
