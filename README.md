@@ -1,4 +1,9 @@
-![](https://i.imgur.com/THPfqAc.png)
+<p align="center">
+<a href="https://cotton123236.github.io/CottonJS/dist/index.html">
+  <img src="https://i.imgur.com/moBEPCH.png" />
+</a>
+</p>
+<br>
 <br>
 <br>
 <p align="center">Cotton.JS is a JavaScript library that allows you to make a mouse interaction animation easily.</p>
@@ -58,6 +63,8 @@ Style your element.
 ```css
 #cotton-cursor {
   position: fixed;
+  top: 0;
+  left: 0;
   z-index: 9;
   width: 20px;
   height: 20px;

@@ -131,6 +131,8 @@
               <p class="tips"><span class="bold">1.</span> Highly suggest setting the <span class="hilite">position</span> property to <span class="hilite">fixed</span> if <span class="bold">not using the airMode</span>, and set <span class="hilite">pointer-events</span> to <span class="hilite">none</span> to make sure the real mouse can touch the DOM element.<br><span class="bold">2.</span> Please <span class="bold">do not</span> use <span class="hilite">transition</span> on the <span class="hilite">transform</span> property, it will cause some problems.</p>
               <pre><code class="language-css">#cotton-cursor {
   position: fixed;
+  top: 0;
+  left: 0;
   z-index: 9;
   width: 20px;
   height: 20px;

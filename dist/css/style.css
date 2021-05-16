@@ -608,3 +608,8 @@ footer a {
   display: inline-block;
   width: 20px;
 }
+@media screen and (max-width: 767px) {
+  footer {
+    padding: 80px 15px 40px;
+  }
+}
