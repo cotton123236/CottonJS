@@ -35,11 +35,11 @@ export default class Cotton {
         leaveScene: null
       }
     }
-    
-    this.element = document.querySelector(element);
+
+    this.element = element instanceof Element ? element : document.querySelector(element);
     this.params = Object.assign({}, defaults, options);
-    this.scene = document.querySelector(this.params.scene);
-    this.models = document.querySelectorAll(this.params.models);
+    this.scene = this.params.scene instanceof Element ? this.params.scene : document.querySelector(this.params.scene);
+    this.models = NodeList.prototype.isPrototypeOf(this.params.models) ? this.params.models : document.querySelectorAll(this.params.models);
     this.enterModelHandler = this.enterModelHandler.bind(this);
     this.leaveModelHandler = this.leaveModelHandler.bind(this);
     
@@ -61,7 +61,7 @@ export default class Cotton {
 
   // private functions
   // get mouse data
-  static getMouseData(scope, type) {
+  static getMouseData(scope) {
     const el = scope.element;
     const scene = scope.scene;
     const mouseData = scope.params.data;

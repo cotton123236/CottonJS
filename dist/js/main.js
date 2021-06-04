@@ -1,8 +1,10 @@
 $(function() {
   // cotton
-  new Cotton('#arrow-cursor', {
+  const arrow = document.querySelector('#arrow-cursor');
+  const arrowModels = document.querySelectorAll('[data-cursor-model]');
+  new Cotton(arrow, {
     speed: 1,
-    models: '[data-cursor-model]',
+    models: arrowModels,
     on: {
       enterModel: function(cursor, model) {
         const color = $(model).attr('data-cursor-color');

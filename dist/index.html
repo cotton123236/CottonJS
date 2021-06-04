@@ -83,6 +83,7 @@
           <div class="title">
             <h1>Cotton.JS</h1>
             <div class="h1-shadow">Cotton.JS</div>
+            <span>v 1.1.0</span>
           </div>
           <p>Cotton.JS is a JavaScript library that allows you to make a mouse interaction animation easily.<br><br><span>LIKE A FLOATING COTTON!</span></p>
           <div class="btn-wrap">
@@ -144,7 +145,12 @@
               <h4>JavaScript</h4>
               <p>Initialize Cotton in JavaScript.</p>
               <p class="tips">Highly recommened use <span class="hilite">id</span> to define your cotton element, because it needs to be the only one on initialization.</p>
-              <pre><code class="language-javascript">const cottonCursor = new Cotton('#cotton-cursor')</code></pre>
+              <pre><code class="language-javascript">const cottonCursor = new Cotton('#cotton-cursor')
+
+// or using DOM element
+const cursor = document.querySelector('#cotton-cursor')
+const cottonCursor = new Cotton(cursor)
+</code></pre>
               <p>See some <a href="#demos">DEMOS</a> directly.</p>
             </div>
           </article>
@@ -173,15 +179,15 @@
                 <tbody>
                   <tr>
                     <td class="w-20 ter-color bold mono">scene</td>
-                    <td class="w-15 gray-color bold mono">string</td>
+                    <td class="w-15 gray-color bold mono">string | element</td>
                     <td class="w-20 ter-color bold mono">'body'</td>
-                    <td class="w-45 thin">The animation will work when only the mouse is moving in the scene.<p class="tips">The scene element has to be the only one.</p></td>
+                    <td class="w-45 thin">The animation will work when only the mouse is moving in the scene.<br>This parameter accept string or DOM element like: <span class="hilite">document.querySelector('body')</span><p class="tips">The scene element has to be the only one.</p></td>
                   </tr>
                   <tr>
                     <td class="w-20 ter-color bold mono">models</td>
-                    <td class="w-15 gray-color bold mono">string</td>
+                    <td class="w-15 gray-color bold mono">string | NodeList</td>
                     <td class="w-20 ter-color bold mono">'.cotton-model'</td>
-                    <td class="w-45 thin">Define the elements that you want your cotton to interact with.</td>
+                    <td class="w-45 thin">Define the elements that you want your cotton to interact with.<br>This parameter accept string or a NodeList like: <span class="hilite">document.querySelectorAll('.cotton-model')</span></td>
                   </tr>
                   <tr>
                     <td class="w-20 ter-color bold mono">cottonInitClass</td>

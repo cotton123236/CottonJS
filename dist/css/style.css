@@ -403,6 +403,11 @@ section.intro .title {
   position: relative;
   margin-bottom: 30px;
 }
+section.intro .title span {
+  position: absolute;
+  right: -40px;
+  bottom: 30px;
+}
 section.intro h1, section.intro .h1-shadow {
   color: var(--primary-color);
   font-size: 160px;
