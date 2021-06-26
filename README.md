@@ -138,11 +138,12 @@ All available callbacks :
 ```js
 const cotton = new Cotton('#cotton-cursor', {
     on: {
-        // first argument is the element that you initialized, second argument is the element the mouse is interacting with.
-        enterModel(cotton, model) {},
-        leaveModel(cotton, model) {},
-        enterScene(cotton, scene) {},
-        leaveScene(cotton, scene) {},
+        // callbacks defined on here.
+        enterModel(cotton, model, event) {},
+        leaveModel(cotton, model, event) {},
+        enterScene(cotton, scene, event) {},
+        leaveScene(cotton, scene, event) {},
+        cottonMove(cotton, event) {}
     }
 })
 ```

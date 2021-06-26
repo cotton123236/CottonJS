@@ -83,7 +83,7 @@
           <div class="title">
             <h1>Cotton.JS</h1>
             <div class="h1-shadow">Cotton.JS</div>
-            <span>v 1.2.0</span>
+            <span>v 1.3.0</span>
           </div>
           <p>Cotton.JS is a JavaScript library that allows you to make a mouse interaction animation easily.<br><br><span>LIKE A FLOATING COTTON!</span></p>
           <div class="btn-wrap">
@@ -314,23 +314,28 @@ cotton.stop()</code></pre>
                 <tbody>
                   <tr>
                     <td class="w-20 f-50 ter-color bold mono">enterModel</td>
-                    <td class="w-15 f-50 ter-color bold mono">(cotton, model)</td>
-                    <td class="w-65 thin">Callback will execute when mouse enter the model.<br>First argument is the cotton element. Second argument is the model that your mouse is touching.</td>
+                    <td class="w-15 f-50 ter-color bold mono">(cotton, model, event)</td>
+                    <td class="w-65 thin">Callback will execute when mouse enter the model.<br>First argument is the cotton element. Second argument is the model that your mouse is touching. And the third argument is the event when mouse enter.</td>
                   </tr>
                   <tr>
                     <td class="w-20 f-50 ter-color bold mono">leaveModel</td>
-                    <td class="w-15 f-50 ter-color bold mono">(cotton, model)</td>
-                    <td class="w-65 thin">Callback will execute when mouse leave the model.<br>First argument is the cotton element. Second argument is the model that your mouse is touching.</td>
+                    <td class="w-15 f-50 ter-color bold mono">(cotton, model, event)</td>
+                    <td class="w-65 thin">Callback will execute when mouse leave the model.<br>First argument is the cotton element. Second argument is the model that your mouse is touching. And the third argument is the event when mouse leave.</td>
                   </tr>
                   <tr>
                     <td class="w-20 f-50 ter-color bold mono">enterScene</td>
-                    <td class="w-15 f-50 ter-color bold mono">(cotton, scene)</td>
-                    <td class="w-65 thin">Callback will execute when mouse enter the scene.<br>First argument is the cotton element. Second argument is the scene that you defined on cotton initialization.</td>
+                    <td class="w-15 f-50 ter-color bold mono">(cotton, scene, event)</td>
+                    <td class="w-65 thin">Callback will execute when mouse enter the scene.<br>First argument is the cotton element. Second argument is the scene that you defined on cotton initialization. And the third argument is the event when mouse enter.</td>
                   </tr>
                   <tr>
                     <td class="w-20 f-50 ter-color bold mono">leaveScene</td>
-                    <td class="w-15 f-50 ter-color bold mono">(cotton, scene)</td>
-                    <td class="w-65 thin">Callback will execute when mouse leave the scene.<br>First argument is the cotton element. Second argument is the scene that you defined on cotton initialization.</td>
+                    <td class="w-15 f-50 ter-color bold mono">(cotton, scene, event)</td>
+                    <td class="w-65 thin">Callback will execute when mouse leave the scene.<br>First argument is the cotton element. Second argument is the scene that you defined on cotton initialization. And the third argument is the event when mouse leave.</td>
+                  </tr>
+                  <tr>
+                    <td class="w-20 f-50 ter-color bold mono">cottonMove</td>
+                    <td class="w-15 f-50 ter-color bold mono">(cotton, event)</td>
+                    <td class="w-65 thin">Callback will execute when mouse is moving in the scene.<br>First argument is the cotton element. Second argument is the event when mouse is moving.</td>
                   </tr>
                 </tbody>
               </table>
