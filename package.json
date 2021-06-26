@@ -1,6 +1,6 @@
 {
   "name": "cottonjs",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Cotton.JS is a JavaScript library that allows you to make a mouse interaction animation easily.",
   "main": "lib/cotton.min.js",
   "module": "src/index.js",
