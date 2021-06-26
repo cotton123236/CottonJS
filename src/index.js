@@ -32,7 +32,8 @@ export default class Cotton {
         enterModel: null,
         leaveModel: null,
         enterScene: null,
-        leaveScene: null
+        leaveScene: null,
+        cottonMove: null
       }
     }
 
@@ -64,14 +65,16 @@ export default class Cotton {
   static getMouseData(scope) {
     const el = scope.element;
     const scene = scope.scene;
-    const mouseData = scope.params.data;
-    const airMode = scope.params.airMode;
+    const params = scope.params
+    const mouseData = params.data;
+    const airMode = params.airMode;
 
     scene.addEventListener('mousemove', function(e) {
       mouseData.mouseX = airMode ? e.pageX : e.clientX;
       mouseData.mouseY = airMode ? e.pageY : e.clientY;
 
-      if ([...el.classList].indexOf(scope.params.conttonInitClass) > -1) el.classList.add(scope.params.cottonMovingClass);
+      if ([...el.classList].indexOf(params.conttonInitClass) > -1) el.classList.add(params.cottonMovingClass);
+      if (params.on.cottonMove && typeof params.on.cottonMove === 'function') params.on.cottonMove.call(scope, el, e);
     });
 
     if (airMode) {
@@ -97,12 +100,12 @@ export default class Cotton {
     const params = scope.params;
     const scene = scope.scene;
 
-    scene.addEventListener('mouseenter', function() {
-      if (params.on.enterScene && typeof params.on.enterScene === 'function') params.on.enterScene.call(scope, el, scene);
+    scene.addEventListener('mouseenter', function(e) {
+      if (params.on.enterScene && typeof params.on.enterScene === 'function') params.on.enterScene.call(scope, el, scene, e);
     });
-    scene.addEventListener('mouseleave', function() {
+    scene.addEventListener('mouseleave', function(e) {
       el.classList.remove(params.cottonMovingClass);
-      if (params.on.leaveScene && typeof params.on.leaveScene === 'function') params.on.leaveScene.call(scope, el, scene);
+      if (params.on.leaveScene && typeof params.on.leaveScene === 'function') params.on.leaveScene.call(scope, el, scene, e);
     });
 
     Cotton.getMouseData(scope, true)
@@ -119,7 +122,7 @@ export default class Cotton {
     const el = this.element;
     const params = this.params;
   
-    if (params.on.enterModel && typeof params.on.enterModel === 'function') params.on.enterModel.call(this, el, e.target);
+    if (params.on.enterModel && typeof params.on.enterModel === 'function') params.on.enterModel.call(this, el, e.target, e);
     el.classList.add(params.cottonActiveClass);
     e.target.classList.add(params.modelsActiveClass);
   }
@@ -129,7 +132,7 @@ export default class Cotton {
     const el = this.element;
     const params = this.params;
   
-    if (params.on.leaveModel && typeof params.on.leaveModel === 'function') params.on.leaveModel.call(this, el, e.target);
+    if (params.on.leaveModel && typeof params.on.leaveModel === 'function') params.on.leaveModel.call(this, el, e.target, e);
     el.classList.remove(params.cottonActiveClass);
     e.target.classList.remove(params.modelsActiveClass);
   }

@@ -6,14 +6,14 @@ $(function() {
     speed: 1,
     models: arrowModels,
     on: {
-      enterModel: function(cursor, model) {
+      enterModel(cursor, model, e) {
         const color = $(model).attr('data-cursor-color');
         if (color) $(cursor).addClass(color);
       },
-      leaveModel: function(cursor, model) {
+      leaveModel(cursor, model, e) {
         const color = $(model).attr('data-cursor-color');
         if (color) $(cursor).removeClass(color);
-      },
+      }
     }
   });
   
