@@ -78,15 +78,12 @@ export default class Cotton {
     });
 
     if (airMode) {
-      mouseData.rect = getRect(el);
-
-      window.addEventListener('resize', function() { mouseData.rect = getRect(el); });
-      
       scene.addEventListener('mousemove', function() {
-        const maxX = window.innerWidth + mouseData.rect.width / 2;
-        const maxY = window.innerHeight + mouseData.rect.height / 2;
-        const distanceX = mouseData.mouseX - mouseData.rect.centerX;
-        const distanceY = mouseData.mouseY - mouseData.rect.centerY;
+        const rect = getRect(el);
+        const maxX = window.innerWidth + rect.width / 2;
+        const maxY = window.innerHeight + rect.height / 2;
+        const distanceX = mouseData.mouseX - rect.centerX;
+        const distanceY = mouseData.mouseY - rect.centerY;
 
         mouseData.distanceX = Math.min(Math.max(parseInt(distanceX), -maxX), maxX);
         mouseData.distanceY = Math.min(Math.max(parseInt(distanceY), -maxY), maxY);
