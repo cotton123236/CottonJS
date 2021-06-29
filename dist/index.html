@@ -255,6 +255,12 @@ const cottonCursor = new Cotton(cursor)
                     <td class="w-20 ter-color bold mono">false</td>
                     <td class="w-45 thin"><span class="bold">This property have to register on airMode.</span><br>By default, the airMode cotton will move forward to the mouse.<br>If set to <span class="hilite">true</span>, the airMode cotton will move backward to the mouse.</td>
                   </tr>
+                  <tr>
+                    <td class="w-20 ter-color bold mono">airMode.alive</td>
+                    <td class="w-15 gray-color bold mono">boolean</td>
+                    <td class="w-20 ter-color bold mono">false</td>
+                    <td class="w-45 thin"><span class="bold">This property have to register on airMode.</span><br>For better efficacy, cotton will save element's origin position when initialize.<br>But if set <span class="bold">alive</span> to <span class="hilite">true</span>, it will keep getting element's position when mouse moving. <p class="tips">Sometimes it will be useful. <br>(like you use airMode in a <span class="hilite">position: fixed</span> modal.)</p></td>
+                  </tr>
                 </tbody>
               </table>
             </div>

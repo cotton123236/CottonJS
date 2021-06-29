@@ -98,7 +98,8 @@ const cottonCursor = new Cotton('#cotton-cursor', {
     centerMouse: true,
     airMode: {
         resistance: 15,
-        reverse: false
+        reverse: false,
+        alive: false
     }
 })
 ```

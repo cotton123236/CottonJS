@@ -50,7 +50,7 @@ export default class Cotton {
     if (this.params.speed > 1 || this.params.speed <= 0) this.params.speed = 0.125;
     if (this.params.airMode) {
       const airMode = this.params.airMode;
-      const airDefaults = { resistance: 15, reverse: false }
+      const airDefaults = { resistance: 15, reverse: false, alive: false }
       if (typeof airMode !== 'object' || Array.isArray(airMode)) this.params.airMode = airDefaults;
       else this.params.airMode = Object.assign(airDefaults, airMode);
       if (airMode.resistance < 1 || airMode.resistance > 100) airMode.resistance = 15;
@@ -78,12 +78,17 @@ export default class Cotton {
     });
 
     if (airMode) {
+      if (!airMode.alive) {
+        mouseData.rect = getRect(el);
+        window.addEventListener('resize', function () { mouseData.rect = getRect(el) });
+      }
+
       scene.addEventListener('mousemove', function() {
-        const rect = getRect(el);
-        const maxX = window.innerWidth + rect.width / 2;
-        const maxY = window.innerHeight + rect.height / 2;
-        const distanceX = mouseData.mouseX - rect.centerX;
-        const distanceY = mouseData.mouseY - rect.centerY;
+        if (airMode.alive) mouseData.rect = getRect(el);
+        const maxX = window.innerWidth + mouseData.rect.width / 2;
+        const maxY = window.innerHeight + mouseData.rect.height / 2;
+        const distanceX = mouseData.mouseX - mouseData.rect.centerX;
+        const distanceY = mouseData.mouseY - mouseData.rect.centerY;
 
         mouseData.distanceX = Math.min(Math.max(parseInt(distanceX), -maxX), maxX);
         mouseData.distanceY = Math.min(Math.max(parseInt(distanceY), -maxY), maxY);
