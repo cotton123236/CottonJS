@@ -1,3 +1,8 @@
+import {
+  getTransformX,
+  getTransformY
+} from './../utils/getRect'
+
 export function cottonAnimation(scope) {
   const el = scope.element;
   const params = scope.params;
@@ -52,6 +57,10 @@ export function airModeAnimation(scope) {
 
   const airX = airMode.reverse ? - mouseData.x : mouseData.x
   const airY = airMode.reverse ? - mouseData.y : mouseData.y
+  const originX = typeof mouseData.transformX === 'number' ? mouseData.transformX + 'px' : mouseData.transformX
+  const originY = typeof mouseData.transformY === 'number' ? mouseData.transformY + 'px' : mouseData.transformY
+  const transformX = mouseData.transformX ? `calc(${originX} + ${Math.floor(airX / airMode.resistance)}px)` : `${Math.floor(airX / airMode.resistance)}px`
+  const transformY = mouseData.transformY ? `calc(${originY} + ${Math.floor(airY / airMode.resistance)}px)` : `${Math.floor(airY / airMode.resistance)}px`
 
-  el.style.transform = `translate(${Math.floor(airX / airMode.resistance)}px, ${Math.floor(airY / airMode.resistance)}px)`
+  el.style.transform = `translate(${transformX}, ${transformY})`
 }

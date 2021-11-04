@@ -10,7 +10,7 @@ export function getRect(element) {
   }
 }
 
-function getTransformX(obj) {
+export function getTransformX(obj) {
   const style = getComputedStyle(obj),
         transform = style.transform;
   var mat = transform.match(/^matrix3d\((.+)\)$/);
@@ -19,7 +19,7 @@ function getTransformX(obj) {
   return mat ? parseFloat(mat[1].split(', ')[4]) : 0;
 }
 
-function getTransformY(obj) {
+export function getTransformY(obj) {
   const style = getComputedStyle(obj),
         transform = style.transform;
   var mat = transform.match(/^matrix3d\((.+)\)$/);

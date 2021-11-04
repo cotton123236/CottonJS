@@ -1,6 +1,6 @@
 import { warn } from './utils/warn'
 import { isMobile } from './utils/isMobile'
-import { getRect } from './utils/getRect'
+import {  getTransformX, getTransformY, getRect } from './utils/getRect'
 import { cottonAnimation, airModeAnimation } from './core/animationFrame'
 import { bindModelCallbacks } from './core/bindCallbacks'
 
@@ -80,7 +80,13 @@ export default class Cotton {
     if (airMode) {
       if (!airMode.alive) {
         mouseData.rect = getRect(el);
-        window.addEventListener('resize', function () { mouseData.rect = getRect(el) });
+        mouseData.transformX = getTransformX(el)
+        mouseData.transformY = getTransformY(el)
+        window.addEventListener('resize', function () {
+          mouseData.rect = getRect(el)
+          mouseData.transformX = getTransformX(el)
+          mouseData.transformY = getTransformY(el)
+        });
       }
 
       scene.addEventListener('mousemove', function() {
