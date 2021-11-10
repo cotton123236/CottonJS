@@ -59,8 +59,12 @@ export function airModeAnimation(scope) {
   const airY = airMode.reverse ? - mouseData.y : mouseData.y
   const originX = typeof mouseData.transformX === 'number' ? mouseData.transformX + 'px' : mouseData.transformX
   const originY = typeof mouseData.transformY === 'number' ? mouseData.transformY + 'px' : mouseData.transformY
-  const transformX = mouseData.transformX ? `calc(${originX} + ${Math.floor(airX / airMode.resistance)}px)` : `${Math.floor(airX / airMode.resistance)}px`
-  const transformY = mouseData.transformY ? `calc(${originY} + ${Math.floor(airY / airMode.resistance)}px)` : `${Math.floor(airY / airMode.resistance)}px`
+  const transformX = mouseData.transformX ? `calc(${originX} + ${roundToTwo(airX / airMode.resistance)}px)` : `${roundToTwo(airX / airMode.resistance)}px`
+  const transformY = mouseData.transformY ? `calc(${originY} + ${roundToTwo(airY / airMode.resistance)}px)` : `${roundToTwo(airY / airMode.resistance)}px`
 
   el.style.transform = `translate(${transformX}, ${transformY})`
+}
+
+const roundToTwo = (num) => {
+  return Math.round((num + Number.EPSILON) * 100) / 100
 }
