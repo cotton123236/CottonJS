@@ -80,6 +80,8 @@ export default class Cotton {
     if (airMode) {
       if (!airMode.alive) {
         mouseData.rect = getRect(el);
+        mouseData.transformX = getTransformX(el)
+        mouseData.transformY = getTransformY(el)
         window.addEventListener('resize', function () {
           mouseData.rect = getRect(el)
         });
